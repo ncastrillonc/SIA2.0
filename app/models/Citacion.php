@@ -7,12 +7,10 @@
  */
 
 /**
- * Description of Estudiante
+ * Description of Duracion
  *
  * @author Camilo
  */
-class Estudiante extends Eloquent{
-    //put your code here
-    protected $table = 'estudiante';
-   public $timestamps = false;
+class Citacion extends Eloquent {
+    protected $table = 'citacion';
 }

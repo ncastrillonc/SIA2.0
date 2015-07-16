@@ -33,5 +33,45 @@ class AdministradorController extends BaseController{
                 ->with('estudiantes',$estudiantes);
         }
     }
+    
+    Public function postAsignarCitacion(){
+        
+        $rule = [
+            'fecha_submit'=>'required|date_format:Y/m/d|after:tomorrow',
+            'time' => 'required|date_format:H:i',
+            'duracion'=>'required|numeric',
+            'identificacion'=>'required|exists:estudiante'
+            
+        ];
+        
+        $messages = [
+            'fecha_submit.required'=>'La fecha es obligatoria',
+            'fecha_submit.date_format'=>'La fecha es incorrecta',
+            'fecha_submit.after' => 'La fecha tiene que ser despues de mañana',
+            'time.required'=>'La hora es obligatoria',
+            'time.date_format'=>'El formato de hora es incorrecto',
+            'duracion.required'=>'La duración es obligatoria',
+            'duracion.numeric'=>'La duración debe ser numerica',
+            
+        ];
+        
+        $validator = Validator::make(Input::all(),$rule,$messages);
+        
+        if($validator->passes()){
+            $citacion = [
+                'fecha' => Input::get('fecha_submit'),
+                'horaIncio'=>Input::get('time'),
+                'duracion'=>Input::get('duracion')
+            ];
+            
+           $id = Citacion::insertGetId($citacion);
+           
+             Estudiante::where('identificacion',Input::get('identificacion'))->update(['citacion'=>$id]);
+           ;
+            
+        }else{
+            return Redirect::back()->withInput()->withErrors($validator);
+        }
+    }
    
 }
