@@ -10,24 +10,33 @@
         <br />
         
         ESTUDIANTE
-        
+                
         <br /><br /><br />
         
         <div class="panel panel-info">
-            
-            <div class="panel-heading">Periodo</div>
+            {$i = 0}
+            {foreach from=$semestres item=semestre}
+                <div class="panel-heading">Periodo {$periodos[$i]}</div>
 
-            <table class="table">
-                <th>Codigo</th>
-                <th>Nota</th>
-                
-                {foreach from=$matriculas item=matricula}
-                    <tr>
-                        <td>{$matricula->curso}</td>
-                        <td>{$matricula->nota}</td>
-                    </tr>
-                {/foreach}
-            </table>
+                <table class="table">
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Créditos</th>
+                    <th>Nota</th>
+                    
+                        {foreach from=$semestre item=matricula}
+                            <tr>
+                                <td>{$matricula->curso}</td>
+                                <td>{$matricula->nombre}</td>
+                                <td>{$matricula->creditos}</td>
+                                <td>{$matricula->nota}</td>
+                            </tr>
+                        {/foreach}
+
+                </table>
+                {$i = $i + 1}
+            {/foreach}
+            
         </div>
     </body>
 </html>
