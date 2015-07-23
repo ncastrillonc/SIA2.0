@@ -2,15 +2,16 @@
 
 class EstudianteController extends BaseController{
     
-    public function getVerHistoria($id=null){
+    public function getVerHistoria($id=11282){
         
         if($id){
-            $estudiante = Estudiante::where('identificacion',$id)->get();
+            $matriculas = Matricula::where('estudiante',$id)->get();
+            
             return View::make('estudiante.verhistoria')
-                    ->with('estudiante',$estudiante[0]);
+                    ->with('matriculas',$matriculas);
         }else{
             return View::make('estudiante.index');
-        }
+            }
     }
     
     
