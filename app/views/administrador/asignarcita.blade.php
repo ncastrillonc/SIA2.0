@@ -3,6 +3,7 @@
         <title>Asignar Cita</title>
         {{HTML::style('./libs/pickadate/lib/themes/default.css')}}
         {{HTML::style('./libs/pickadate/lib/themes/default.date.css')}}
+      
     </head>
     <body>
         <b>Nombre: </b> {{$estudiante->nombre}}<br>
@@ -66,6 +67,7 @@
         {{HTML::script('./libs/pickadate/lib/picker.date.js')}}
         {{HTML::script('./libs/pickadate/lib/picker.time.js')}}
         {{HTML::script('./libs/pickadate/lib/legacy.js')}}
+      
         <script type="text/javascript">
 
         var $input = $( '.datepicker' ).pickadate({
