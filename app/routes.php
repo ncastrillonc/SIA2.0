@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/', function() {
+
+    return View::make('profesor.solicitud');
 });
 
+
 Route::controller('/administrador','AdministradorController');
+Route::controller('solicitud','SolicitudController');
