@@ -23,6 +23,7 @@
                     name="fecha"
                     type="text"
                     value="{{ Input::old('fecha_submit')}}"
+                    placeholder="Ingrese una fecha"
                     autofocuss
                     data-valuee="2014-08-08">
                 <div class="bg-danger">
@@ -35,12 +36,13 @@
                     type="time"
                     name="time"
                     value="{{ Input::old('time')}}"
+                    placeholder="Ingrese una hora"
                     autofocuss>
                 <div class="bg-danger">
                 {{$errors->first('time')}}
                 </div>
                 <br>
-                {{Form::text('duracion','1')}}
+                {{Form::text('duracion',Input::old('duracion'),array('placeholder'=>'Ingrese una duración'))}}
                 <div class="bg-danger">
                 {{$errors->first('duracion')}}
                 </div>
