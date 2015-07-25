@@ -60,7 +60,7 @@ class AdministradorController extends BaseController{
         if($validator->passes()){
             $citacion = [
                 'fecha' => Input::get('fecha_submit'),
-                'horaIncio'=>Input::get('time'),
+                'horaInicio'=>Input::get('time'),
                 'duracion'=>Input::get('duracion')
             ];
             
