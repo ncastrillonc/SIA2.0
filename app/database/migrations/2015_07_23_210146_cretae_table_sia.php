@@ -46,12 +46,10 @@ class CretaeTableSia extends Migration {
             
             Schema::create('citacion', function($table)
             {
-                $table->bigInteger('codigo');
+                $table->increments('codigo');
                 $table->date('fecha');
                 $table->time('horaInicio');
                 $table->smallInteger('duracion');
-                
-                $table->primary('codigo');
             });
             
             // --
