@@ -46,7 +46,7 @@ class CretaeTableSia extends Migration {
             
             Schema::create('citacion', function($table)
             {
-                $table->increments('codigo');
+                $table->bigIncrements('codigo');
                 $table->date('fecha');
                 $table->time('horaInicio');
                 $table->smallInteger('duracion');
@@ -62,7 +62,7 @@ class CretaeTableSia extends Migration {
                 $table->string('usuario', 15);
                 $table->string('contrasena', 20);
                 $table->bigInteger('carrera');
-                $table->bigInteger('citacion')->nullable();
+                $table->bigInteger('citacion')->unsigned()->nullable();
                 
                 $table->primary('identificacion');
                 
