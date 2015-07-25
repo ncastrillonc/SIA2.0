@@ -19,3 +19,5 @@ Route::get('/', function()
 Route::controller('/administrador','AdministradorController');
 
 Route::controller('/estudiante','EstudianteController');
+
+Route::controller('/solicitud','SolicitudController');
