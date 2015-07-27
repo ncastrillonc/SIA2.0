@@ -1,14 +1,8 @@
-@extends('layouts.master')
 
-@section('titulo')
-Asignar Cita
-@stop 
-
-@section('options')
 <li class="treeview">
     <a href="#">
         <i class="fa fa-files-o"></i>
-        <span>Layout Options</span>
+        <span>holas</span>
         <span class="label label-primary pull-right">4</span>
     </a>
     <ul class="treeview-menu">
@@ -40,4 +34,3 @@ Asignar Cita
     </a>
 </li>
 
-@stop

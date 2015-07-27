@@ -48,6 +48,10 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('asignarcita',function(){
+    
+});
+
 
 Route::filter('auth.basic', function()
 {

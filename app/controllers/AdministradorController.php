@@ -25,49 +25,59 @@ class AdministradorController extends BaseController{
          * 
          */
         if($id){
-            $estudiante = Estudiante::where('identificacion',$id)->get();
-            return View::make('administrador.asignarcita')->with('estudiante',$estudiante[0]);
+            $estudiante = Estudiante::where('identificacion',$id)->whereNull('citacion')->get();
+            if(empty($estudiante[0])){
+                 return Redirect::to('/administrador/asignar-citacion');
+            }else{
+            return View::make('administrador.form_asignarcitacion')->with('estudiante',$estudiante[0]);
+            }
         }else{
         $estudiantes = Estudiante::whereNull('citacion')->get();
-        return View::make('administrador.index')
+        return View::make('administrador.asignarcitacion')
                 ->with('estudiantes',$estudiantes);
         }
     }
     
     Public function postAsignarCitacion(){
         
+       // Input::get('hora')  = date("H:i", strtotime(Input::get('hora')));
+       $campos = Input::all();
+       $campos['hora_n'] = date("H:i", strtotime(Input::get('hora')));
+        
         $rule = [
-            'fecha_submit'=>'required|date_format:Y/m/d|after:tomorrow',
-            'time' => 'required|date_format:H:i',
+            'fecha'=>'required|date_format:Y/m/d|after:tomorrow',
+            'hora_n' => 'required|date_format:H:i',
             'duracion'=>'required|numeric',
             'identificacion'=>'required|exists:estudiante'
             
         ];
         
         $messages = [
-            'fecha_submit.required'=>'La fecha es obligatoria',
-            'fecha_submit.date_format'=>'La fecha es incorrecta',
-            'fecha_submit.after' => 'La fecha tiene que ser despues de mañana',
-            'time.required'=>'La hora es obligatoria',
-            'time.date_format'=>'El formato de hora es incorrecto',
+            'fecha.required'=>'La fecha es obligatoria',
+            'fecha.date_format'=>'La fecha es incorrecta',
+            'fecha.after' => 'La fecha tiene que ser despues de mañana',
+            'hora_n'=>'La hora es obligatoria',
+            'hora_n'=>'El formato de hora es incorrecto',
             'duracion.required'=>'La duración es obligatoria',
             'duracion.numeric'=>'La duración debe ser numerica',
+            'identificacion.exists'=>'El estudiante al que trata asignarle una cita no existe'
             
         ];
         
-        $validator = Validator::make(Input::all(),$rule,$messages);
+        $validator = Validator::make($campos,$rule,$messages);
         
         if($validator->passes()){
             $citacion = [
-                'fecha' => Input::get('fecha_submit'),
-                'horaInicio'=>Input::get('time'),
+                'fecha' => Input::get('fecha'),
+                'horaInicio'=>$campos['hora_n'],
                 'duracion'=>Input::get('duracion')
             ];
             
            $id = Citacion::insertGetId($citacion);
            
-             Estudiante::where('identificacion',Input::get('identificacion'))->update(['citacion'=>$id]);
-           ;
+           Estudiante::where('identificacion',Input::get('identificacion'))->update(['citacion'=>$id]);
+           
+           return Redirect::to('/administrador/asignar-citacion')->with('state','ok');
             
         }else{
             return Redirect::back()->withInput()->withErrors($validator);
