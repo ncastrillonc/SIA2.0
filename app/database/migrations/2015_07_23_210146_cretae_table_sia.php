@@ -64,6 +64,7 @@ class CretaeTableSia extends Migration {
                 $table->smallInteger('capacidad_salon');
                 $table->smallInteger('creditos_curso');
                 $table->string('tipologia_curso');
+                $table->boolean('estado')->default(0);
                 
                 //$table->primary('codigo');
             });

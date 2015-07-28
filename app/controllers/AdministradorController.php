@@ -83,5 +83,10 @@ class AdministradorController extends BaseController{
             return Redirect::back()->withInput()->withErrors($validator);
         }
     }
+    
+    public function getAgregarCurso(){
+        $solicitudes = Solicitud::estado()->get();
+        return View::make('administrador.agregarcurso')->with('solicitudes',$solicitudes);
+    }
    
 }

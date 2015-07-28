@@ -34,6 +34,7 @@ class SolicitudController extends BaseController{
         
     }
     public function getCrear(){
+        
         return View::make('profesor.solicitud');
     }
 

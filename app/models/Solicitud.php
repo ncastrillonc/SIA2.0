@@ -15,4 +15,10 @@ class Solicitud extends Eloquent{
     
     protected $table = 'solicitud';
  
+    public function scopeEstado($query){
+        
+        return $query->where('estado','=',0);
+        
+    }
+    
 }
