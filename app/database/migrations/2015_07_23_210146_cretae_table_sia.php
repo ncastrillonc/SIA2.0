@@ -51,6 +51,20 @@ class CretaeTableSia extends Migration {
                 $table->time('horaInicio');
                 $table->smallInteger('duracion');
             });
+            Schema::create('solicitud', function($table)
+            {
+                $table->bigIncrements('codigo');
+                $table->string('nombre');
+                $table->string('email');
+                $table->bigInteger('codigo_curso');
+                $table->string('nombre_curso');
+                $table->date('horario_curso');
+                $table->text('descripcion');
+                $table->string('salon');
+                $table->smallInteger('capacidad_salon');
+                $table->smallInteger('creditos_curso');
+                $table->string('tipologia_curso');
+            });
             
             // --
             
@@ -302,6 +316,7 @@ class CretaeTableSia extends Migration {
             Schema::drop('carrera');
             Schema::drop('salon');
             Schema::drop('docente');            
+            Schema::drop('solicitud');            
 	}
 
 }
