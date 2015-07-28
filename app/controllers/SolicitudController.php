@@ -29,7 +29,7 @@ class SolicitudController extends BaseController{
         
         DB::table('solicitud')->insert($solicitud);
         
-        return Redirect::to("/solicitud");
+        return Redirect::to("/solicitud/crear");
         
         
     }

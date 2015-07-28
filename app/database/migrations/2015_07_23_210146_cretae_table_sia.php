@@ -54,7 +54,7 @@ class CretaeTableSia extends Migration {
             Schema::create('solicitud', function($table)
             {
                 $table->bigIncrements('codigo');
-                $table->string('nombre');
+                $table->string('usuario');
                 $table->string('email');
                 $table->bigInteger('codigo_curso');
                 $table->string('nombre_curso');
@@ -64,6 +64,8 @@ class CretaeTableSia extends Migration {
                 $table->smallInteger('capacidad_salon');
                 $table->smallInteger('creditos_curso');
                 $table->string('tipologia_curso');
+                
+                //$table->primary('codigo');
             });
             
             // --
