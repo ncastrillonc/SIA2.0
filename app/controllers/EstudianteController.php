@@ -20,7 +20,6 @@ class EstudianteController extends BaseController{
             }
             
             return View::make('estudiante.verhistoria')
-                    ->with('periodos',$periodos)
                     ->with('semestres',$semestres);
         }else{
             return View::make('estudiante.index');

@@ -1,0 +1,43 @@
+@extends('layouts.master')
+
+@section('titulo')
+    Ver Historia Académica
+@stop 
+
+@section('styles')
+    {{HTML::style("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")}}
+@stop
+
+@section('content')
+
+    <br /><br /><br />
+     
+    @foreach($semestres as $semestre)
+    <div class="panel panel-info">
+        
+            <div class="panel-heading">Periodo {{$semestre[0]->periodo}}</div>
+
+            <table class="table">
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Créditos</th>
+                <th>Nota</th>
+
+                    @foreach($semestre as $matricula)
+                        <tr>
+                            <td>{{$matricula->curso}}</td>
+                            <td>{{$matricula->nombre}}</td>
+                            <td>{{$matricula->creditos}}</td>
+                            <td>{{$matricula->nota}}</td>
+                        </tr>
+                    @endforeach
+
+            </table>
+    </div>
+    <br />
+    @endforeach
+@stop 
+
+@section('scripts')
+    {{HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')}}
+@stop
