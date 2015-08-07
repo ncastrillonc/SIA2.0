@@ -23,7 +23,7 @@ class EstudianteController extends BaseController{
                     ->with('semestres',$semestres);
         }else{
             return View::make('estudiante.index');
-            }
+        }
     }
     
 }

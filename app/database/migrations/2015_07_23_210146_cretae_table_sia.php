@@ -12,16 +12,26 @@ class CretaeTableSia extends Migration {
 	 */
 	public function up()
 	{
-            Schema::create('docente', function($table)
+            Schema::create('persona', function($table)
             {
                 $table->bigInteger('identificacion');
                 $table->string('nombre', 30);
                 $table->string('apellidos', 30);
                 $table->string('usuario', 15);
                 $table->string('contrasena', 20);
+                
+                $table->primary('identificacion');
+            });
+            
+            Schema::create('docente', function($table)
+            {
+                $table->bigInteger('identificacion');
                 $table->string('oficina', 30);
                 
-                $table->primary('identificacion');                
+                $table->primary('identificacion');   
+                
+                $table->foreign('identificacion')
+                        ->references('identificacion')->on('persona');
             });
             
             Schema::create('salon', function($table)
@@ -51,37 +61,19 @@ class CretaeTableSia extends Migration {
                 $table->time('horaInicio');
                 $table->smallInteger('duracion');
             });
-            Schema::create('solicitud', function($table)
-            {
-                $table->bigIncrements('codigo');
-                $table->string('usuario');
-                $table->string('email');
-                $table->bigInteger('codigo_curso');
-                $table->string('nombre_curso');
-                $table->date('horario_curso');
-                $table->text('descripcion');
-                $table->string('salon');
-                $table->smallInteger('capacidad_salon');
-                $table->smallInteger('creditos_curso');
-                $table->string('tipologia_curso');
-                $table->boolean('estado')->default(0);
-                
-                //$table->primary('codigo');
-            });
             
             // --
             
             Schema::create('estudiante', function($table)
             {
                 $table->bigInteger('identificacion');
-                $table->string('nombre', 30);
-                $table->string('apellidos', 30);
-                $table->string('usuario', 15);
-                $table->string('contrasena', 20);
                 $table->bigInteger('carrera');
                 $table->bigInteger('citacion')->unsigned()->nullable();
                 
                 $table->primary('identificacion');
+                
+                $table->foreign('identificacion')
+                        ->references('identificacion')->on('persona');
                 
                 $table->foreign('carrera')
                         ->references('codigo')->on('carrera');
@@ -129,25 +121,73 @@ class CretaeTableSia extends Migration {
                         ->references('identificacion')->on('estudiante');
             });
             
+            Schema::create('solicitud', function($table)
+            {
+                $table->bigIncrements('codigo');
+                $table->string('usuario');
+                $table->string('email');
+                $table->bigInteger('codigo_curso');
+                $table->string('nombre_curso');
+                $table->date('horario_curso');
+                $table->text('descripcion');
+                $table->string('salon');
+                $table->smallInteger('capacidad_salon');
+                $table->smallInteger('creditos_curso');
+                $table->string('tipologia_curso');
+                $table->boolean('estado')->default(0);
+                
+                //$table->primary('codigo');
+            });
+            
             // **************************************************************
             
-            DB::table('docente')
+            DB::table('persona')
             ->insert([
                 'identificacion' => 1001,
                 'nombre' => 'Luis',
                 'apellidos' => 'Mesa Rojas',
                 'usuario' => 'lmesar',
-                'contrasena' => Hash::make('123'),
+                'contrasena' => Hash::make('123')
+            ]);
+            
+            DB::table('persona')
+            ->insert([
+                'identificacion' => 1002,
+                'nombre' => 'Ana',
+                'apellidos' => 'Zapata Yepes',
+                'usuario' => 'azapatay',
+                'contrasena' => Hash::make('987')
+            ]);
+            
+            DB::table('persona')
+            ->insert([
+                'identificacion' => 11281,
+                'nombre' => 'Camilo',
+                'apellidos' => 'Taborda Zuluaga',
+                'usuario' => 'ctabordaz',
+                'contrasena' => Hash::make('101')
+            ]);
+            
+            DB::table('persona')
+            ->insert([
+                'identificacion' => 11282,
+                'nombre' => 'Jorge Andres',
+                'apellidos' => 'Bedoya Hernandez',
+                'usuario' => 'jabedoyah',
+                'contrasena' => Hash::make('202')
+            ]);
+            
+            // -- 
+            
+            DB::table('docente')
+            ->insert([
+                'identificacion' => 1001,
                 'oficina' => 'M8A-214'
             ]);
             
             DB::table('docente')
             ->insert([
                 'identificacion' => 1002,
-                'nombre' => 'Ana',
-                'apellidos' => 'Zapata Yepes',
-                'usuario' => 'azapatay',
-                'contrasena' => Hash::make('987'),
                 'oficina' => 'M8A-307'
             ]);
             
@@ -199,20 +239,12 @@ class CretaeTableSia extends Migration {
             DB::table('estudiante')
             ->insert([
                 'identificacion' => 11281,
-                'nombre' => 'Camilo',
-                'apellidos' => 'Taborda Zuluaga',
-                'usuario' => 'ctabordaz',
-                'contrasena' => Hash::make('101'),
                 'carrera' => 2345
             ]);
             
             DB::table('estudiante')
             ->insert([
                 'identificacion' => 11282,
-                'nombre' => 'Jorge Andres',
-                'apellidos' => 'Bedoya Hernandez',
-                'usuario' => 'jabedoyah',
-                'contrasena' => Hash::make('202'),
                 'carrera' => 2345
             ]);
             
