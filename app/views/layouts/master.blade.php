@@ -19,6 +19,8 @@
     <!-- Theme style -->
     {{HTML::style("./master/dist/css/AdminLTE.min.css")}}
     
+    {{HTML::style("./assets/css/style.css")}}
+    
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     {{HTML::style("./master/dist/css/skins/_all-skins.min.css")}}

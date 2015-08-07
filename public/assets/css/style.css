@@ -10,3 +10,36 @@
     /* inline-block space fix */
     margin-right:-4px;
 }
+
+.input-box {
+    text-align: center;
+    background-color: #ecf0f5;
+    color: #000000 !important;
+    font-size: 14px;
+    border: none;
+    padding-left: 10px;
+    border-bottom: 1px solid #3c8dbc;
+    margin-bottom: 10px;
+    outline: none;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    
+}
+
+.font {
+    font-size: 120%;
+}
+
+.div{
+    padding-left: 5%;
+
+}
+
+.text{
+    width: 1000px;
+}
+
+.pad{
+    padding-right: 5%;
+}
