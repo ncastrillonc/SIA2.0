@@ -23,15 +23,12 @@ Route::post('/loguear', function(){
     $psd = Input::get('contrasena');
     
     if(Auth::attempt(array('usuario' => $us, 'password' => $psd))){
-        return Redirect::to("/profile");
+        return Redirect::to("/profile")
+                ->with('usuario', $us)
+                ->with('password', $psd);
     }else{
         echo "El usuario no está logueado";
     }
-});
-
-Route::get('/profile', function()
-{
-	return View::make('layouts.master');
 });
 
 Route::controller('/administrador','AdministradorController');
@@ -39,3 +36,5 @@ Route::controller('/administrador','AdministradorController');
 Route::controller('/estudiante','EstudianteController');
 
 Route::controller('/solicitud','SolicitudController');
+
+Route::controller('/profile','ProfileController');

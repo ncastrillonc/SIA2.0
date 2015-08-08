@@ -9,5 +9,4 @@
 class Persona extends Eloquent{
     //put your code here
     protected $table = 'persona';
-   public $timestamps = false;
 }
