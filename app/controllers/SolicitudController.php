@@ -14,28 +14,37 @@
 class SolicitudController extends BaseController{
     
     public function postCrear(){
+        
+                
         $solicitud = [
-            'usuario' => 'Nombre profesor',
-            'email' => 'email@email.com',
-            'codigo_curso' => Input::get('codigo_curso'),
-            'nombre_curso' => Input::get('nombre_curso'),
-            'horario_curso' => Input::get('horario_curso'),
-            'descripcion' => Input::get('descripcion'),
-            'salon' => Input::get('salon'),
-            'capacidad_salon' => Input::get('capacidad_salon'),
-            'creditos_curso' => Input::get('creditos_curso'),
-            'tipologia_curso' => Input::get('tipologia_curso')           
+           $docente = Auth::user()->id
+                
         ];
         
         DB::table('solicitud')->insert($solicitud);
-        
-        return Redirect::to("/solicitud/crear");
         
         
     }
     public function getCrear(){
         
-        return View::make('profesor.solicitud');
+        $curso = Curso::all();
+        
+        return View::make('profesor.solicitud')
+                ->with("cursos", $curso);
+    }
+    
+    public function postCurso(){
+        
+        $curso = Curso::where('codigo',Input::get('curso'))->first();
+       
+        $data =  [
+            'nombre' =>  $curso->nombre
+            
+        ];
+        
+        return Response::json($data);
+        
+        
     }
 
 }

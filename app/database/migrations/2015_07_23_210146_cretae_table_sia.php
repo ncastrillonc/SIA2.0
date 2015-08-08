@@ -104,13 +104,7 @@ class CretaeTableSia extends Migration {
             
             Schema::create('solicitud', function($table)
             {
-                $table->bigIncrements('codigo');
-                $table->date('fecha');
-                $table->string('descripcion', 500);
-                $table->boolean('estado')->default(0);
                 $table->bigInteger('docente');
-                $table->bigInteger('administrador');
-                $table->bigInteger('curso');
                 
                 $table->foreign('docente')
                         ->references('id')->on('docente');

@@ -358,7 +358,7 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    {{HTML::script('./master/plugins/jQuery/jQuery-2.1.4.min.js')}}
+    {{HTML::script('//code.jquery.com/jquery-1.11.3.min.js')}}
     
     <!-- jQuery UI 1.11.4 -->
     {{HTML::script('https://code.jquery.com/ui/1.11.4/jquery-ui.min.js')}}
@@ -409,6 +409,11 @@
     <!-- AdminLTE for demo purposes -->
     {{HTML::script('./master/dist/js/demo.js')}}
     
+    <script>
+      var baseUrl = "{{URL::to('/')}}";
+    </script>
+    
+    {{HTML::script('./assets/js/app.js')}}
     @section('scripts')
     
     @show

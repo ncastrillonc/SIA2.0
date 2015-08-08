@@ -9,12 +9,17 @@ Solicitar curso
         {{Form::open(array('url'=>'solicitud/crear','method'=>'POST'))}}
             
         <div class="box-header">
-            <h3 class="box-title">Esto es una página seria</h3><br>
+            <h3 id="prueba" class="box-title">Esto es una página seria</h3><br>
 
         </div><br>
                 <div class="row">
                     <div class="col-xs-6">
-                        <b>Código curso: </b><input required class="box box-input input-box" name="codigo_curso" placeholder="Codigo del curso"><br>
+                        <b>Código curso: </b>
+                            <select id="cursos">
+                                @foreach($cursos as $curso)
+                                <option value="{{$curso->codigo}}">{{$curso->nombre}}</option>
+                                @endforeach
+                            </select><br>
                         <b>Horario curso: </b><input required class="box box-input input-box" name="horario_curso" placeholder="Horario del curso"><br>
                         <b>Salón: </b><input required class="box box-input input-box" name="salon" placeholder="Salon"><br>
                         <b>Créditos: </b><input required class="box box-input input-box" name="creditos_curso" placeholder="Creditos del curso"><br>
