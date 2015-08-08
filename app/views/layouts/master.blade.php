@@ -143,10 +143,11 @@
          
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
-          <ul class="sidebar-menu">
-            <li class="header">NAVEGACIÓN</li>
-           @include('menu.admin')     
-          </ul>
+            <ul class="sidebar-menu">
+                <li class="header">NAVEGACIÓN</li>
+                <!-- @include('menu.admin') -->
+                @include('menu.student')
+            </ul>
         </section>
         <!-- /.sidebar -->
       </aside>

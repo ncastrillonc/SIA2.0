@@ -6,3 +6,8 @@
  * and open the template in the editor.
  */
 
+class Persona extends Eloquent{
+    //put your code here
+    protected $table = 'persona';
+   public $timestamps = false;
+}

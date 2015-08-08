@@ -13,6 +13,24 @@
 
 Route::get('/', function()
 {
+	//return View::make('layouts.master');
+        return View::make('login.login');
+});
+
+Route::post('/loguear', function(){
+    
+    $us = Input::get('usuario');
+    $psd = Input::get('contrasena');
+    
+    if(Auth::attempt(array('usuario' => $us, 'password' => $psd))){
+        return Redirect::to("/profile");
+    }else{
+        echo "El usuario no está logueado";
+    }
+});
+
+Route::get('/profile', function()
+{
 	return View::make('layouts.master');
 });
 

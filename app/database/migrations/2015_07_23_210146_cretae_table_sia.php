@@ -14,44 +14,44 @@ class CretaeTableSia extends Migration {
 	{
             Schema::create('persona', function($table)
             {
-                $table->bigInteger('identificacion');
+                $table->bigInteger('id');
                 $table->string('nombre', 30);
                 $table->string('apellidos', 30);
                 $table->string('usuario', 15);
-                $table->string('contrasena', 20);
+                $table->string('password', 200);
                 
-                $table->primary('identificacion');
+                $table->primary('id');
             });
             
             Schema::create('administrador', function($table)
             {
-                $table->bigInteger('identificacion');
+                $table->bigInteger('id');
                 
-                $table->primary('identificacion');   
+                $table->primary('id');   
                 
-                $table->foreign('identificacion')
-                        ->references('identificacion')->on('persona');
+                $table->foreign('id')
+                        ->references('id')->on('persona');
             });
             
             Schema::create('docente', function($table)
             {
-                $table->bigInteger('identificacion');
+                $table->bigInteger('id');
                 $table->string('oficina', 30)->nullable();
                 
-                $table->primary('identificacion');   
+                $table->primary('id');   
                 
-                $table->foreign('identificacion')
-                        ->references('identificacion')->on('persona');
+                $table->foreign('id')
+                        ->references('id')->on('persona');
             });
             
             Schema::create('estudiante', function($table)
             {
-                $table->bigInteger('identificacion');
+                $table->bigInteger('id');
                 
-                $table->primary('identificacion');
+                $table->primary('id');
                 
-                $table->foreign('identificacion')
-                        ->references('identificacion')->on('persona');
+                $table->foreign('id')
+                        ->references('id')->on('persona');
             });
             
             Schema::create('salon', function($table)
@@ -97,7 +97,7 @@ class CretaeTableSia extends Migration {
                 $table->bigInteger('administrador');
                 
                 $table->foreign('administrador')
-                        ->references('identificacion')->on('administrador');
+                        ->references('id')->on('administrador');
             });
             
             Schema::create('solicitud', function($table)
@@ -111,10 +111,10 @@ class CretaeTableSia extends Migration {
                 $table->bigInteger('curso');
                 
                 $table->foreign('docente')
-                        ->references('identificacion')->on('docente');
+                        ->references('id')->on('docente');
                 
                 $table->foreign('administrador')
-                        ->references('identificacion')->on('administrador');
+                        ->references('id')->on('administrador');
                 
                 $table->foreign('curso')
                         ->references('codigo')->on('curso');                
@@ -133,7 +133,7 @@ class CretaeTableSia extends Migration {
                         ->references('codigo')->on('curso');
                 
                 $table->foreign('estudiante')
-                        ->references('identificacion')->on('estudiante');
+                        ->references('id')->on('estudiante');
             });           
             
             Schema::create('est_x_carrera', function($table)
@@ -144,7 +144,7 @@ class CretaeTableSia extends Migration {
                 $table->primary(array('estudiante', 'carrera'));
                 
                 $table->foreign('estudiante')
-                        ->references('identificacion')->on('estudiante');
+                        ->references('id')->on('estudiante');
                 
                 $table->foreign('carrera')
                         ->references('codigo')->on('carrera');
@@ -161,7 +161,7 @@ class CretaeTableSia extends Migration {
                         ->references('codigo')->on('citacion');
                 
                 $table->foreign('estudiante')
-                        ->references('identificacion')->on('estudiante');
+                        ->references('id')->on('estudiante');
             });
             
             Schema::create('grupo', function($table)
@@ -176,7 +176,7 @@ class CretaeTableSia extends Migration {
                         ->references('codigo')->on('curso');
                 
                 $table->foreign('docente')
-                        ->references('identificacion')->on('docente');
+                        ->references('id')->on('docente');
             });
             
             Schema::create('programacion', function($table)
@@ -202,67 +202,67 @@ class CretaeTableSia extends Migration {
             
             DB::table('persona')
             ->insert([
-                'identificacion' => 666,
+                'id' => 666,
                 'nombre' => 'Esteban',
                 'apellidos' => 'Quito',
                 'usuario' => 'esquito',
-                'contrasena' => Hash::make('666')
+                'password' => Hash::make('666')
             ]);
             
             DB::table('persona')
             ->insert([
-                'identificacion' => 1001,
+                'id' => 1001,
                 'nombre' => 'Luis',
                 'apellidos' => 'Mesa Rojas',
                 'usuario' => 'lmesar',
-                'contrasena' => Hash::make('123')
+                'password' => Hash::make('123')
             ]);
             
             DB::table('persona')
             ->insert([
-                'identificacion' => 1002,
+                'id' => 1002,
                 'nombre' => 'Ana',
                 'apellidos' => 'Zapata Yepes',
                 'usuario' => 'azapatay',
-                'contrasena' => Hash::make('987')
+                'password' => Hash::make('987')
             ]);
             
             DB::table('persona')
             ->insert([
-                'identificacion' => 11281,
+                'id' => 11281,
                 'nombre' => 'Camilo',
                 'apellidos' => 'Taborda Zuluaga',
                 'usuario' => 'ctabordaz',
-                'contrasena' => Hash::make('101')
+                'password' => Hash::make('101')
             ]);
             
             DB::table('persona')
             ->insert([
-                'identificacion' => 11282,
+                'id' => 11282,
                 'nombre' => 'Jorge Andres',
                 'apellidos' => 'Bedoya Hernandez',
                 'usuario' => 'jabedoyah',
-                'contrasena' => Hash::make('202')
+                'password' => Hash::make('202')
             ]);
             
             // -- 
             
             DB::table('administrador')
             ->insert([
-                'identificacion' => 666
+                'id' => 666
             ]);
             
             // -- 
             
             DB::table('docente')
             ->insert([
-                'identificacion' => 1001,
+                'id' => 1001,
                 'oficina' => 'M8A-214'
             ]);
             
             DB::table('docente')
             ->insert([
-                'identificacion' => 1002,
+                'id' => 1002,
                 'oficina' => 'M8A-307'
             ]);
             
@@ -270,12 +270,12 @@ class CretaeTableSia extends Migration {
             
             DB::table('estudiante')
             ->insert([
-                'identificacion' => 11281
+                'id' => 11281
             ]);
             
             DB::table('estudiante')
             ->insert([
-                'identificacion' => 11282
+                'id' => 11282
             ]);
             
             // -- 
