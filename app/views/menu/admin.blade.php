@@ -8,7 +8,7 @@
 </li>
 <li>
     <a href="{{URL::to('/administrador/agregar-curso')}}">
-        <i class="fa fa-plus-square"></i> <span>Agragar Curso</span>
+        <i class="fa fa-plus-square"></i> <span>Agregar Curso</span>
        
     </a>
 </li>
