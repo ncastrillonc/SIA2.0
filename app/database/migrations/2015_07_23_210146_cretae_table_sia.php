@@ -19,6 +19,8 @@ class CretaeTableSia extends Migration {
                 $table->string('apellidos', 30);
                 $table->string('usuario', 15);
                 $table->string('password', 200);
+                $table->timestamps();  
+                $table->rememberToken(); 
                 
                 $table->primary('id');
             });
