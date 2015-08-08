@@ -4,10 +4,6 @@
     Ver Historia Académica
 @stop 
 
-@section('styles')
-    {{HTML::style("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")}}
-@stop
-
 @section('content')
 
     <br /><br /><br />
@@ -37,7 +33,3 @@
     <br />
     @endforeach
 @stop 
-
-@section('scripts')
-    {{HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')}}
-@stop
