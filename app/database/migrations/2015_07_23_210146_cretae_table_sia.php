@@ -104,7 +104,10 @@ class CretaeTableSia extends Migration {
             
             Schema::create('solicitud', function($table)
             {
+                $table->date('fecha');
                 $table->bigInteger('docente');
+                $table->bigInteger('administrador')->nullable();
+                $table->bigInteger('curso');
                 
                 $table->foreign('docente')
                         ->references('id')->on('docente');
@@ -376,8 +379,6 @@ class CretaeTableSia extends Migration {
             DB::table('solicitud')
             ->insert([
                 'fecha' => date("Y-m-d"),
-                'descripcion' => 'Prueba de solicitud',
-                'estado' => 1,
                 'docente' => 1001,
                 'administrador' => 666,
                 'curso' => 12
