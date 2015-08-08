@@ -145,8 +145,14 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">NAVEGACIÓN</li>
-                <!-- @include('menu.admin') -->
-                @include('menu.student')
+                
+                @if ($tipo === "Administrador")
+                    @include('menu.admin')
+                @elseif ($tipo === "Estudiante")
+                    @include('menu.student')
+                @else
+                    I don't have any records!
+                @endif
             </ul>
         </section>
         <!-- /.sidebar -->
