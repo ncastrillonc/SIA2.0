@@ -83,7 +83,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{url('./master/dist/img/user3-128x128.jpg')}}" class="user-image" alt="User Image" />
-                  <span class="hidden-xs"><?php echo $nombre; ?></span>
+                  <span class="hidden-xs">{{Auth::user()->nombre}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -135,8 +135,8 @@
               <img src="{{url('./master/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p><?php echo $nombre; ?></p>
-              <a href="#"><i class="fa fa-circle text-success"></i> <?php echo $tipo; ?></a>
+              <p>{{Auth::user()->nombre}}</p>
+              <a href="#"><i class="fa fa-circle text-success"></i>{{Session::get('tipo')}}</a>
             </div>
           </div>
           <!-- search form -->
@@ -146,9 +146,9 @@
             <ul class="sidebar-menu">
                 <li class="header">NAVEGACIÓN</li>
                 
-                @if ($tipo === "Administrador")
+                @if (Session::get('tipo') === "Administrador")
                     @include('menu.admin')
-                @elseif ($tipo === "Estudiante")
+                @elseif (Session::get('tipo') === "Estudiante")
                     @include('menu.student')
                 @else
                     I don't have any records!

@@ -13,26 +13,16 @@
  */
 class AdministradorController extends BaseController{
     public function getAsignarCitacion($id=null){
-        /*$estudiante = [
-            'identificacion'=>'1152203887',
-            'nombre'=>'Camilo',
-            'apellidos'=>'Taborda',
-            'usuario'=>'ctabordaz',
-            'contrasena'=>'123',
-            'carrera'=>'sistemas'
-        ];
-        Estudiante::insert($estudiante);
-         * 
-         */
+        
         if($id){
-            $estudiante = Estudiante::where('identificacion',$id)->whereNull('citacion')->get();
+            $estudiante = Estudiante::where('identificacion',$id)->get();
             if(empty($estudiante[0])){
                  return Redirect::to('/administrador/asignar-citacion');
             }else{
             return View::make('administrador.form_asignarcitacion')->with('estudiante',$estudiante[0]);
             }
         }else{
-        $estudiantes = Estudiante::whereNull('citacion')->get();
+        $estudiantes = Estudiante::all();
         return View::make('administrador.asignarcitacion')
                 ->with('estudiantes',$estudiantes);
         }

@@ -23,9 +23,8 @@ Route::post('/loguear', function(){
     $psd = Input::get('contrasena');
     
     if(Auth::attempt(array('usuario' => $us, 'password' => $psd))){
-        return Redirect::to("/profile")
-                ->with('usuario', $us)
-                ->with('password', $psd);
+        return Redirect::to("/profile");
+                
     }else{
         echo "El usuario no está logueado";
     }
