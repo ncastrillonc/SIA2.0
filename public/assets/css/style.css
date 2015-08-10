@@ -43,3 +43,7 @@
 .pad{
     padding-right: 5%;
 }
+
+th,td{
+    text-align: center;
+}

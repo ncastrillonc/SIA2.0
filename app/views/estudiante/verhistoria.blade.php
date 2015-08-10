@@ -4,6 +4,8 @@
     Ver Historia Académica
 @stop 
 
+
+
 @section('content')
 
     <br /><br /><br />
@@ -33,3 +35,4 @@
     <br />
     @endforeach
 @stop 
+

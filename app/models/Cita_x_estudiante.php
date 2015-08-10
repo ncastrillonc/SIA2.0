@@ -11,11 +11,12 @@
  *
  * @author Camilo
  */
-class Citacion extends Eloquent {
-    protected $table = 'citacion';
+class Cita_x_estudiante extends Eloquent {
+    protected $table = 'cita_x_estudiante';
     public $timestamps = false;
     
-    public function estudiantes(){
-        return $this->belongsToMany('Estudiante', 'cita_x_estudiante', 'citacion', 'estudiante');
+    public function citaciones()
+    {
+        return $this->belongsTo('Citacion', 'citacion','codigo');
     }
 }

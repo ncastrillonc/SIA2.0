@@ -14,7 +14,11 @@
 Route::get('/', function()
 {
 	//return View::make('layouts.master');
-        return View::make('login.login');
+       if(Auth::check()){
+           return Redirect::to('/profile');
+       }else{
+            return View::make('login.login');
+       }
 });
 
 Route::post('/loguear', function(){
