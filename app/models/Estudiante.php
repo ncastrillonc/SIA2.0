@@ -14,5 +14,13 @@
 class Estudiante extends Eloquent{
     //put your code here
     protected $table = 'estudiante';
-   public $timestamps = false;
+    public $timestamps = false;
+    
+    
+    public function persona(){
+        return $this->hasOne('Persona', 'id');
+    }
+    public function citaciones(){
+        return $this->belongsToMany('Citacion', 'cita_x_estudiante', 'estudiante', 'citacion');
+    }
 }

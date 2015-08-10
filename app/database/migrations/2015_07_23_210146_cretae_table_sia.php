@@ -92,7 +92,7 @@ class CretaeTableSia extends Migration {
             
             Schema::create('citacion', function($table)
             {
-                $table->bigIncrements('codigo');
+                $table->bigIncrements('id');
                 $table->date('fecha');
                 $table->time('horaInicio');
                 $table->smallInteger('duracion');
@@ -160,7 +160,7 @@ class CretaeTableSia extends Migration {
                 $table->primary(array('citacion', 'estudiante'));
                 
                 $table->foreign('citacion')
-                        ->references('codigo')->on('citacion');
+                        ->references('id')->on('citacion');
                 
                 $table->foreign('estudiante')
                         ->references('id')->on('estudiante');
@@ -369,7 +369,7 @@ class CretaeTableSia extends Migration {
             
             DB::table('citacion')
             ->insert([
-                'codigo' => 1,
+                'id' => 1,
                 'fecha' => date("Y-m-d"),
                 'horaInicio' => time(),
                 'duracion' => 30,
