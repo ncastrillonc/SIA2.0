@@ -82,13 +82,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{url('./master/dist/img/user3-128x128.jpg')}}" class="user-image" alt="User Image" />
+                  <img src="{{url('./master/dist/img/avatar04.png')}}" class="user-image" alt="User Image" />
                   <span class="hidden-xs">{{Auth::user()->nombre}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="{{url('./master/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
+                    <img src="{{url('./master/dist/img/avatar04.png')}}" class="img-circle" alt="User Image" />
                     <p>
                       {{Auth::user()->nombre}} {{Auth::user()->apellidos}}
                       <small>{{Auth::user()->usuario}}<?php echo "@unal.edu.co"; ?></small>
@@ -97,24 +97,16 @@
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
+                      <p>Followers</p>
                     </div>
                     <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
+                      <p>Sales</p>
                     </div>
                     <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
+                      <p>Friends</p>
                     </div>
                   </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
+                  
                 </ul>
               </li>
               <!-- Control Sidebar Toggle Button -->
@@ -132,7 +124,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="{{url('./master/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
+              <img src="{{url('./master/dist/img/avatar04.png')}}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p>{{Auth::user()->nombre}}</p>

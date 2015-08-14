@@ -2,6 +2,16 @@
 
 class EstudianteController extends BaseController{
     
+    public function __construct() {
+        $this->beforeFilter(function() {
+            if (Session::get('tipo') !== 'Estudiante') {
+                Return Redirect::to('/');
+            }
+        });
+
+        $this->beforeFilter('auth');
+    }
+    
     public function getVerHistoria(){
         
         $cedula_id = Session::get('cedula_id');
@@ -26,6 +36,14 @@ class EstudianteController extends BaseController{
         }else{
             return View::make('estudiante.index');
         }
+    }
+    
+    public function getInscribirOnline(){
+        // recoge la citacion y la compara con la fecha del sistema
+        // estudiante inscribe
+        // materias se registran en sus cursos actuales
+        
+        return View::make('estudiante.inscribironline');
     }
     
     public function getLogout() {
