@@ -3,9 +3,6 @@
 class ProfileController extends BaseController{
     
     public function getIndex(){
-       
-  
-              
         
             $est = Estudiante::where('id', Auth::user()->id)->first();
             $doc = Docente::where('id', Auth::user()->id)->first();
@@ -21,7 +18,8 @@ class ProfileController extends BaseController{
                 $tipo = 'Administrador';    
             }
             
-            Session::put('tipo',$tipo) ;
+            Session::put('tipo',$tipo);
+            Session::put('cedula_id',Auth::user()->id);
             
             return View::make('layouts.master');
     }

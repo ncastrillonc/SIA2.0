@@ -418,6 +418,14 @@ class CretaeTableSia extends Migration {
                 'nota' => 3.7
             ]);
             
+            DB::table('matricula')
+            ->insert([
+                'curso' => 12,
+                'estudiante' => 11281,
+                'periodo' => '2015-1',
+                'nota' => 3.1
+            ]);
+            
             // --
             
             DB::table('est_x_carrera')
