@@ -11,7 +11,7 @@
  *
  * @author Camilo
  */
-class Cita_x_estudiante extends Eloquent {
+class CitaXestudiante extends Eloquent {
     protected $table = 'cita_x_estudiante';
     public $timestamps = false;
     

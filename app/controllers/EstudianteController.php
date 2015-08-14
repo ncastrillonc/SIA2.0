@@ -43,6 +43,32 @@ class EstudianteController extends BaseController{
         // estudiante inscribe
         // materias se registran en sus cursos actuales
         
+        $cedula_id = Session::get('cedula_id');
+        
+        $citaciones = CitaXestudiante::where('estudiante',$cedula_id)->lists('citacion');
+        $citaciones = array_unique($citaciones);
+        sort($citaciones);
+        
+        for($i=0; $i<count($citaciones); $i++){
+            $cita = Citacion::select('fecha', 'horaInicio')->where('id',$citaciones[$i])->first();
+            
+            $todayF = date('Y-m-d');            
+            $todayH = date("H:i:s");
+            
+            Session::put('fecha',$todayF);
+            Session::put('hora',$todayH);
+            
+            // verificar cómo sumar 30 min a una hora
+            if($cita->fecha == $todayF && ($cita->horaInicio >= $todayH && $cita->horaInicio <= $todayH + 30)){
+                // se abre la citacion
+                // se cambia el estado de la citacion
+            } else{
+                // vista que indique que no está autorizado a inscribir
+            }
+            
+        }
+        
+        // quitar esto
         return View::make('estudiante.inscribironline');
     }
     

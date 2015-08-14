@@ -7,7 +7,7 @@
 
 
 @section('content')
-    holi
-
+    <?php echo Session::get('fecha').'<br/>'; ?>
+    <?php echo Session::get('hora'); ?>
 @stop 
 
