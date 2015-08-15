@@ -51,25 +51,29 @@ class EstudianteController extends BaseController{
         
         for($i=0; $i<count($citaciones); $i++){
             $cita = Citacion::select('fecha', 'horaInicio')->where('id',$citaciones[$i])->first();
+            date_default_timezone_set("America/Bogota");
             
-            $todayF = date('Y-m-d');            
-            $todayH = date("H:i:s");
+            $serverDate = date('Y-m-d');     
+            $serverHour = date("H:i:s");
             
-            Session::put('fecha',$todayF);
-            Session::put('hora',$todayH);
+            $startDate = $cita->fecha;
+            $startHour = $cita->horaInicio;
             
-            // verificar cómo sumar 30 min a una hora
-            if($cita->fecha == $todayF && ($cita->horaInicio >= $todayH && $cita->horaInicio <= $todayH + 30)){
-                // se abre la citacion
-                // se cambia el estado de la citacion
+            $endHour = strtotime ('+20 minute' , strtotime ($startHour)) ;
+            $endHour = date ('H:i:s' , $endHour);
+            
+            Session::put('fecha',$startHour);
+            Session::put('hora',$serverHour);
+            
+            // Si es el día de la inscripción y está dentro del rango horario
+            if($startDate == $serverDate && ($serverHour >= $startHour && $serverHour <= $endHour)){
+                
+                return View::make('estudiante.inscribironline');
             } else{
-                // vista que indique que no está autorizado a inscribir
+                return View::make('estudiante.index');
             }
             
-        }
-        
-        // quitar esto
-        return View::make('estudiante.inscribironline');
+        }        
     }
     
     public function getLogout() {
