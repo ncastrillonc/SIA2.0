@@ -62,9 +62,6 @@ class EstudianteController extends BaseController{
             $endHour = strtotime ('+20 minute' , strtotime ($startHour)) ;
             $endHour = date ('H:i:s' , $endHour);
             
-            Session::put('fecha',$startHour);
-            Session::put('hora',$serverHour);
-            
             // Si es el día de la inscripción y está dentro del rango horario
             if($startDate == $serverDate && ($serverHour >= $startHour && $serverHour <= $endHour)){
                 
