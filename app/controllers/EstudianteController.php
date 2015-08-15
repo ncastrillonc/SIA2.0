@@ -73,6 +73,26 @@ class EstudianteController extends BaseController{
         }        
     }
     
+    public function postBuscarCarrera(){
+        if(Request::ajax()){
+      
+        $carrera = Carrera::find(Input::get('carrera'));
+
+        $comentario = [
+            'publicacion' => Input::get('nombre'),
+            'tipo' => 1,
+            'usuario_id' => Auth::user()->id,
+            'receptor' => $publicacion->receptor,
+            'padre' => $publicacion->id
+        ];
+
+        DB::table('publicacion')->insert($comentario);     
+
+        return Response::json($comentario);
+
+        }
+    }
+    
     public function getLogout() {
         Auth::logout();
         return Redirect::to("/");
