@@ -75,20 +75,6 @@ class EstudianteController extends BaseController{
         }        
     }
     
-    public function postBuscarCarrera(){
-        
-        if(Request::ajax()){
-      
-            $carrera = Carrera::where('codigo',Input::get('carrera'))->first();
-       
-            $data =  [
-                'eleccion' =>  $carrera->nombre
-            ];
-
-            return Response::json($data);
-        }
-    }
-    
     public function getLogout() {
         Auth::logout();
         return Redirect::to("/");

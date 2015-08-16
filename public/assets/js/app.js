@@ -26,17 +26,7 @@ $("#carreras").change(function(){
     $("#carreras option:selected").each(function(){
         var carrera = $(this).val();
 
-        $.ajax({
-            url: baseUrl+'/estudiante/buscar-carrera',
-            type: 'POST',
-            async: true,
-            data: {
-                carrera: carrera
-            },
-            success: function (response) {
-                $('#prueba').text(response.eleccion);
-            }
-        });
+        $('#prueba').text(carrera);
     });
 
 }).trigger("change");
