@@ -402,7 +402,7 @@
     {{HTML::script('./master/dist/js/demo.js')}}
     
     <script>
-      var baseUrl = "{{URL::to('/')}}";
+        var baseUrl = "{{URL::to('/')}}";
     </script>
     
     {{HTML::script('./assets/js/app.js')}}

@@ -59,10 +59,12 @@ class EstudianteController extends BaseController{
             $startDate = $cita->fecha;
             $startHour = $cita->horaInicio;
             
-            $endHour = strtotime ('+20 minute' , strtotime ($startHour)) ;
+            $endHour = strtotime ('+40 minute' , strtotime ($startHour)) ;
             $endHour = date ('H:i:s' , $endHour);
             
             // Si es el día de la inscripción y está dentro del rango horario
+            
+            // echo "&& (".$serverHour." >= ".$startHour." && ".$serverHour." <= ".$endHour.")";
             if($startDate == $serverDate && ($serverHour >= $startHour && $serverHour <= $endHour)){
                 
                 return View::make('estudiante.inscribironline');
@@ -74,22 +76,16 @@ class EstudianteController extends BaseController{
     }
     
     public function postBuscarCarrera(){
+        
         if(Request::ajax()){
       
-        $carrera = Carrera::find(Input::get('carrera'));
+            $carrera = Carrera::where('codigo',Input::get('carrera'))->first();
+       
+            $data =  [
+                'eleccion' =>  $carrera->nombre
+            ];
 
-        $comentario = [
-            'publicacion' => Input::get('nombre'),
-            'tipo' => 1,
-            'usuario_id' => Auth::user()->id,
-            'receptor' => $publicacion->receptor,
-            'padre' => $publicacion->id
-        ];
-
-        DB::table('publicacion')->insert($comentario);     
-
-        return Response::json($comentario);
-
+            return Response::json($data);
         }
     }
     
