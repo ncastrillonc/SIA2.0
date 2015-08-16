@@ -18,6 +18,7 @@
                 <div class="form-group">
                     <label>Carrera</label>
                     <select id="carreras" class="form-control select2" style="width: 100%;">
+                        <option value=0>Ninguna</option>
                         @foreach($careers as $c)
                             <option value="{{$c->codigo}}">{{$c->nombre}}</option>
                         @endforeach
@@ -27,7 +28,7 @@
                 <!-- Color Picker -->
                 <div class="form-group">
                     <label>Componente Disciplinar</label>
-                    <select class="form-control select2" style="width: 100%;">
+                    <select id="disc" class="form-control select2" style="width: 100%;" disabled>
                         <option selected="selected">Alabama</option>
                         <option>Alaska</option>
                         <option>California</option>
@@ -40,7 +41,7 @@
 
                 <div class="form-group">
                     <label>Componente de Fundamentación</label>
-                        <select class="form-control select2" style="width: 100%;">
+                        <select class="form-control select2" style="width: 100%;" disabled>
                             <option selected="selected">Alabama</option>
                             <option>Alaska</option>
                             <option>California</option>

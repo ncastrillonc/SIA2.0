@@ -24,8 +24,13 @@ $("#cursos").change(function(){
 $("#carreras").change(function(){
     
     $("#carreras option:selected").each(function(){
-        var carrera = $(this).val();
+        var carrera = new Number($(this).val());
 
+        if(carrera != 0){
+            $('#disc').removeAttr("disabled");
+        } else{            
+            $('#disc').prop('disabled', true);
+        }
         $('#prueba').text(carrera);
     });
 
