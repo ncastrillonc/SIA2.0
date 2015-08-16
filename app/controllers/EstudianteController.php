@@ -67,7 +67,11 @@ class EstudianteController extends BaseController{
             // echo "&& (".$serverHour." >= ".$startHour." && ".$serverHour." <= ".$endHour.")";
             if($startDate == $serverDate && ($serverHour >= $startHour && $serverHour <= $endHour)){
                 
-                return View::make('estudiante.inscribironline');
+                $careers = Carrera::select('codigo', 'nombre')->get();
+                
+                return View::make('estudiante.inscribironline')
+                        ->with('careers', $careers);
+                
             } else{
                 return View::make('estudiante.index');
             }

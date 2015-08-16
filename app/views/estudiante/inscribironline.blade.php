@@ -18,8 +18,9 @@
                 <div class="form-group">
                     <label>Carrera</label>
                     <select id="carreras" class="form-control select2" style="width: 100%;">
-                        <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
-                        <option value="Ingenieria Quimica">Ingenieria Quimica</option>
+                        @foreach($careers as $c)
+                            <option value="{{$c->codigo}}">{{$c->nombre}}</option>
+                        @endforeach
                     </select>
                 </div><!-- /.form group -->
 
