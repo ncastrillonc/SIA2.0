@@ -1501,8 +1501,14 @@ S2.define('select2/selection/single',[
     $rendered.prop('title', selection.title || selection.text); 
     
     // selection.id = opción seleccionada
-    
     $('#prueba').text(selection.id);
+    
+    if(selection.id != 0 && !isNaN(selection.id)){        
+        $('#disc').removeAttr("disabled");
+    } else{
+        $('#disc').attr('disabled', 'true');
+    }
+    
   };
 
   return SingleSelection;
