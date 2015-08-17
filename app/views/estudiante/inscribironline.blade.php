@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label>Componente Disciplinar</label>
                     <select id="disc" class="form-control select2" style="width: 100%;" disabled>
-                        <option selected="selected">Alabama</option>
+                        <option value=0>- Seleccione una asignatura -</option>
                         <option>Alaska</option>
                         <option>California</option>
                         <option>Delaware</option>
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label>Componente de Fundamentación</label>
                         <select id="fund" class="form-control select2" style="width: 100%;" disabled>
-                            <option selected="selected">Alabama</option>
+                            <option value=0>- Seleccione una asignatura -</option>
                             <option>Alaska</option>
                             <option>California</option>
                             <option>Delaware</option>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label>Componente de Libre Elección</label>
                         <select id="elec" class="form-control select2" style="width: 100%;" disabled>
-                            <option selected="selected">Alabama</option>
+                            <option value=0>- Seleccione una asignatura -</option>
                             <option>Alaska</option>
                             <option>California</option>
                             <option>Delaware</option>

@@ -1505,10 +1505,21 @@ S2.define('select2/selection/single',[
     
     if(selection.id != 0 && !isNaN(selection.id)){        
         $('#disc').removeAttr("disabled");
+        
+        $.ajax({            
+            url: baseUrl+'/estudiante/buscar',
+            type: 'POST',
+            async: true,
+            data: {
+                codigo: selection.id
+            },
+            success: function (response) {
+                $('#prueba').text(response.nombre);
+            }
+        });
     } else{
         $('#disc').attr('disabled', 'true');
-    }
-    
+    }    
   };
 
   return SingleSelection;

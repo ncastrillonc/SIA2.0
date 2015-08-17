@@ -35,16 +35,13 @@ class SolicitudController extends BaseController{
     
     public function postCurso(){
         
-        $curso = Curso::where('codigo',Input::get('curso'))->first();
+        $curso = Curso::where('codigo',Input::get('codigo'))->first();
        
         $data =  [
-            'nombre' =>  $curso->nombre
-            
+            'nombre' =>  $curso->nombre            
         ];
         
-        return Response::json($data);
-        
-        
+        return Response::json($data);  
     }
 
 }

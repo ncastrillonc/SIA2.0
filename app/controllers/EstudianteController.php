@@ -81,13 +81,14 @@ class EstudianteController extends BaseController{
     
     public function postBuscar(){
         
-        $carrera = Carrera::where('codigo',Input::get('id'))->first();
-       
+        $carrera = Carrera::where('codigo',Input::get('codigo'))->first();
+        $cursos = Curso::all();
+        
         $data =  [
-            'nombre' =>  $carrera->nombre            
+            'nombre' =>  $carrera->nombre
         ];
         
-        return Response::json($data);
+        return Response::json($data); 
     }
     
     public function getLogout() {
