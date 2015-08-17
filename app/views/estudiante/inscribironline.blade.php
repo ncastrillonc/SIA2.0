@@ -40,13 +40,6 @@
                     <label>Componente Disciplinar</label><br />
                     <div id="global">
                         <div id="mensajes1" class="mensajes">
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label>
                         </div>
                     </div>
                 </div>
@@ -58,13 +51,6 @@
                     <label>Componente de Fundamentación</label><br />
                     <div id="global">
                         <div id="mensajes2" class="mensajes">
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label>
                         </div>
                     </div>
                 </div>
@@ -76,13 +62,6 @@
                     <label>Componente de Libre Elección</label><br />
                     <div id="global">
                         <div id="mensajes3" class="mensajes">
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
-                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label>
                         </div>
                     </div>
                 </div>
