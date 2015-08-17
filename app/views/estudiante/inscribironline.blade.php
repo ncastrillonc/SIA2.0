@@ -17,7 +17,7 @@
         <div class="box box-info">
             <div class="box-header">
                 <h3 class="box-title">Realizar inscripción</h3> <br />
-                <h3 class="prueba">Holi</h3>
+                <p id="prueba">Holi</p>
             </div>
 
             <div class="box-body">
@@ -83,7 +83,7 @@
     <!-- jQuery 2.1.4 -->
     {{HTML::script('./master/plugins/jQuery/jQuery-2.1.4.min.js')}}
     <!-- Select2 -->
-    {{HTML::script('./master/plugins/select2/select2.full.min.js')}}   
+    {{HTML::script('./master/plugins/select2/select2.full.js')}}   
     
     <script type="text/javascript">
         $(function () {

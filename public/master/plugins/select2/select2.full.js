@@ -1018,7 +1018,7 @@ S2.define('select2/results',[
       // When the dropdown is closed, aria-expended="false"
       self.$results.attr('aria-expanded', 'false');
       self.$results.attr('aria-hidden', 'true');
-      self.$results.removeAttr('aria-activedescendant');
+      self.$results.removeAttr('aria-activedescendant');      
     });
 
     container.on('results:toggle', function () {
@@ -1298,11 +1298,10 @@ S2.define('select2/selection/base',[
       this._tabindex = this.$element.attr('tabindex');
     }
 
-    $selection.attr('title', this.$element.attr('title'));
-    $selection.attr('tabindex', this._tabindex);
+    $selection.attr('tabindex', this._tabindex); 
 
     this.$selection = $selection;
-
+    
     return $selection;
   };
 
@@ -1498,7 +1497,12 @@ S2.define('select2/selection/single',[
 
     var $rendered = this.$selection.find('.select2-selection__rendered');
     $rendered.empty().append(formatted);
-    $rendered.prop('title', selection.title || selection.text);
+    
+    $rendered.prop('title', selection.title || selection.text); 
+    
+    // selection.id = opción seleccionada
+    
+    $('#prueba').text(selection.id);
   };
 
   return SingleSelection;
@@ -1598,8 +1602,7 @@ S2.define('select2/selection/multiple',[
       $selections.push($selection);
     }
 
-    var $rendered = this.$selection.find('.select2-selection__rendered');
-
+    var $rendered = this.$selection.find('.select2-selection__rendered');    
     Utils.appendMany($rendered, $selections);
   };
 
@@ -3080,6 +3083,7 @@ S2.define('select2/data/select',[
     return $option;
   };
 
+  // llena el nuevo combobox
   SelectAdapter.prototype.item = function ($option) {
     var data = {};
 
@@ -3090,6 +3094,7 @@ S2.define('select2/data/select',[
     }
 
     if ($option.is('option')) {
+        
       data = {
         id: $option.val(),
         text: $option.text(),

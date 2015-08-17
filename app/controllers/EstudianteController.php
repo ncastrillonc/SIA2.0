@@ -79,6 +79,17 @@ class EstudianteController extends BaseController{
         }        
     }
     
+    public function postBuscar(){
+        
+        $carrera = Carrera::where('codigo',Input::get('id'))->first();
+       
+        $data =  [
+            'nombre' =>  $carrera->nombre            
+        ];
+        
+        return Response::json($data);
+    }
+    
     public function getLogout() {
         Auth::logout();
         return Redirect::to("/");
