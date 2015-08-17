@@ -24,6 +24,7 @@ $("#cursos").change(function(){
 $("#carreras").change(function(){
     
     $("#carreras option:selected").each(function(){
+        // carrera = # de codigo de la carrera seleccionada
         var carrera = new Number($(this).val());
 
         if(carrera != 0){
@@ -36,6 +37,15 @@ $("#carreras").change(function(){
 
 }).trigger("change");
 
-
+$(function(){
+    alert("entra");
+    box = $("#select2-carreras-container");
+    
+    if(box.attr("title", "- Seleccione una carrera -")) {
+        alert("nada");
+    } else{
+        alert("sipi");
+    }
+});
 
 

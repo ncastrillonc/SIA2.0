@@ -4,12 +4,20 @@
     Inscribir en línea
 @stop 
 
+@section('styles')
+    <!-- Select2 -->
+    {{HTML::style("./master/plugins/select2/select2.min.css")}}
+    <!-- Theme style -->
+    {{HTML::style("./master/dist/css/AdminLTE.min.css")}}
+@stop
+
 @section('content')
 
     {{Form::open(array('url'=>'estudiante/inscribir-online','method'=>'POST'))}}
         <div class="box box-info">
             <div class="box-header">
-                <h3 class="box-title">Realizar inscripción</h3>
+                <h3 class="box-title">Realizar inscripción</h3> <br />
+                <h3 class="prueba">Holi</h3>
             </div>
 
             <div class="box-body">
@@ -18,9 +26,9 @@
                 <div class="form-group">
                     <label>Carrera</label>
                     <select id="carreras" class="form-control select2" style="width: 100%;">
-                        <option value=0>Ninguna</option>
+                        <option value=0>- Seleccione una carrera -</option>
                         @foreach($careers as $c)
-                            <option value="{{$c->codigo}}">{{$c->nombre}}</option>
+                            <option value="{{$c->codigo}}">{{$c->codigo}} - {{$c->nombre}}</option>
                         @endforeach
                     </select>
                 </div><!-- /.form group -->
@@ -41,7 +49,7 @@
 
                 <div class="form-group">
                     <label>Componente de Fundamentación</label>
-                        <select class="form-control select2" style="width: 100%;" disabled>
+                        <select id="fund" class="form-control select2" style="width: 100%;" disabled>
                             <option selected="selected">Alabama</option>
                             <option>Alaska</option>
                             <option>California</option>
@@ -53,8 +61,16 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label>Componente de Libre Elección</label><br />
-                    <h3 id="prueba" class="box-title">Esto es una página seria</h3><br>
+                    <label>Componente de Libre Elección</label>
+                        <select id="elec" class="form-control select2" style="width: 100%;" disabled>
+                            <option selected="selected">Alabama</option>
+                            <option>Alaska</option>
+                            <option>California</option>
+                            <option>Delaware</option>
+                            <option>Tennessee</option>
+                            <option>Texas</option>
+                            <option>Washington</option>
+                        </select><!-- /.input group -->
                 </div><!-- /.form group -->
             </div><!-- /.box-body -->
         </div><!-- /.box -->
@@ -62,3 +78,17 @@
     {{Form::close()}}
 @stop 
 
+@section('scripts')
+
+    <!-- jQuery 2.1.4 -->
+    {{HTML::script('./master/plugins/jQuery/jQuery-2.1.4.min.js')}}
+    <!-- Select2 -->
+    {{HTML::script('./master/plugins/select2/select2.full.min.js')}}   
+    
+    <script type="text/javascript">
+        $(function () {
+            //Initialize Select2 Elements
+            $(".select2").select2();
+        });
+    </script>
+@stop

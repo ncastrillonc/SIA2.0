@@ -349,7 +349,7 @@
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
+    <!-- jQuery 1.11.3 -->
     {{HTML::script('//code.jquery.com/jquery-1.11.3.min.js')}}
     
     <!-- jQuery UI 1.11.4 -->
@@ -406,6 +406,7 @@
     </script>
     
     {{HTML::script('./assets/js/app.js')}}
+    
     @section('scripts')
     
     @show

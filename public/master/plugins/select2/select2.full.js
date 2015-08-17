@@ -1592,7 +1592,7 @@ S2.define('select2/selection/multiple',[
 
       $selection.append(formatted);
       $selection.prop('title', selection.title || selection.text);
-
+      
       $selection.data('data', selection);
 
       $selections.push($selection);
@@ -3122,7 +3122,7 @@ S2.define('select2/data/select',[
     data.element = $option[0];
 
     $.data($option[0], 'data', data);
-
+    
     return data;
   };
 
