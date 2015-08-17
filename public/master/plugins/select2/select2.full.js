@@ -1503,8 +1503,13 @@ S2.define('select2/selection/single',[
     // selection.id = opción seleccionada
     $('#prueba').text(selection.id);
     
-    if(selection.id != 0 && !isNaN(selection.id)){        
-        $('#disc').removeAttr("disabled");
+    if(selection.id != 0 && !isNaN(selection.id)){  
+        
+        $('#global').css('background','#ffffff');
+        
+        $('.mensajes').css('height','auto');
+        $('.mensajes').css('background','#ffffff');
+        $('.mensajes').css('display','inline');
         
         $.ajax({            
             url: baseUrl+'/estudiante/buscar',
@@ -1515,11 +1520,12 @@ S2.define('select2/selection/single',[
             },
             success: function (response) {
                 $('#prueba').text(response.nombre);
-                
             }
         });
     } else{
-        $('#disc').attr('disabled', 'true');
+        $('#prueba').text("Sin Carrera");
+        $('.mensajes').css('display','none');
+        $('#global').css('background','#f1f1f1');
     }    
   };
 

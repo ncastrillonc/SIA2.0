@@ -1,19 +1,19 @@
 #global {
     height: 155px;
-    width: 200px;
+    width: auto;
     border: 1px solid #ddd;
     background: #f1f1f1;
-    overflow-y: scroll;
+    overflow-y: scroll; 
 }
-#mensajes {
+.mensajes {
     height: auto;
     background: #ffffff;
+    display: none;
 }
 .texto {
     padding: 4px;
     background: #ffffff;
 }
-
 .checklabels {
     padding-left: 10px;
     padding-top: 4px;

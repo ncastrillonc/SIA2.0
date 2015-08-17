@@ -83,7 +83,7 @@ class EstudianteController extends BaseController{
         
         $carrera = Carrera::where('codigo',Input::get('codigo'))->first();
         $cursos = Curso::all();
-        
+
         $data =  [
             'nombre' =>  $carrera->nombre
         ];

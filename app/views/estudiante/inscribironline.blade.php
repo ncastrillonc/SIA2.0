@@ -37,9 +37,9 @@
 
                 <!-- checkbox -->
                 <div class="form-group">
-                    <label>Componente Disciplinar</label>
+                    <label>Componente Disciplinar</label><br />
                     <div id="global">
-                        <div id="mensajes">
+                        <div id="mensajes1" class="mensajes">
                             <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
                             <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
                             <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
@@ -50,32 +50,44 @@
                         </div>
                     </div>
                 </div>
-
+                
+                <hr />
+                
+                <!-- checkbox -->
                 <div class="form-group">
-                    <label>Componente de Fundamentación</label>
-                        <select id="disc" class="form-control select2" style="width: 100%;" disabled>
-                            <option value=0>- Seleccione una asignatura -</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                        </select><!-- /.input group -->
-                </div><!-- /.form group -->
+                    <label>Componente de Fundamentación</label><br />
+                    <div id="global">
+                        <div id="mensajes2" class="mensajes">
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr />
 
+                <!-- checkbox -->
                 <div class="form-group">
-                    <label>Componente de Libre Elección</label>
-                        <select id="elec" class="form-control select2" style="width: 100%;" disabled>
-                            <option value=0>- Seleccione una asignatura -</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                        </select><!-- /.input group -->
-                </div><!-- /.form group -->
+                    <label>Componente de Libre Elección</label><br />
+                    <div id="global">
+                        <div id="mensajes3" class="mensajes">
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr />
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     
