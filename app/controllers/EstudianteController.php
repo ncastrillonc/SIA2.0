@@ -85,7 +85,8 @@ class EstudianteController extends BaseController{
         $cursos = Curso::all();
 
         $data =  [
-            'nombre' =>  $carrera->nombre
+            'nombre' =>  $carrera->nombre,
+            'cursos' =>  $cursos
         ];
         
         return Response::json($data); 

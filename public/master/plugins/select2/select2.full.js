@@ -1500,33 +1500,36 @@ S2.define('select2/selection/single',[
     
     $rendered.prop('title', selection.title || selection.text); 
     
-    // selection.id = opción seleccionada
-    $('#prueba').text(selection.id);
+    // ------------------------------------------------------------------------
     
-    if(selection.id != 0 && !isNaN(selection.id)){  
-        
-        $('#global').css('background','#ffffff');
-        
-        $('.mensajes').css('height','auto');
-        $('.mensajes').css('background','#ffffff');
-        $('.mensajes').css('display','inline');
-        
-        $.ajax({            
-            url: baseUrl+'/estudiante/buscar',
-            type: 'POST',
-            async: true,
-            data: {
-                codigo: selection.id
-            },
-            success: function (response) {
-                $('#prueba').text(response.nombre);
-            }
-        });
-    } else{
-        $('#prueba').text("Sin Carrera");
-        $('.mensajes').css('display','none');
-        $('#global').css('background','#f1f1f1');
-    }    
+    if(bandera % 2 == 0){
+        if(selection.id != 0 && !isNaN(selection.id)){  
+
+            $('#global').css('background','#ffffff');
+
+            $('.mensajes').css('height','auto');
+            $('.mensajes').css('background','#ffffff');
+            $('.mensajes').css('display','inline');
+
+            $.ajax({            
+                url: baseUrl+'/estudiante/buscar',
+                type: 'POST',
+                async: true,
+                data: {
+                    codigo: selection.id
+                },
+                success: function (response) {
+                    $('#prueba').text(response.nombre);
+                    console.log(response.cursos);
+                }
+            });
+        } else{
+            $('#prueba').text("Sin Carrera");
+            $('.mensajes').css('display','none');
+            $('#global').css('background','#f1f1f1');
+        }   
+    }
+    bandera = bandera + 1;
   };
 
   return SingleSelection;
