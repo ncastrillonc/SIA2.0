@@ -1,0 +1,21 @@
+#global {
+    height: 155px;
+    width: 200px;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    overflow-y: scroll;
+}
+#mensajes {
+    height: auto;
+    background: #ffffff;
+}
+.texto {
+    padding: 4px;
+    background: #ffffff;
+}
+
+.checklabels {
+    padding-left: 10px;
+    padding-top: 4px;
+    font-weight: normal;
+}

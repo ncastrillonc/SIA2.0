@@ -9,6 +9,8 @@
     {{HTML::style("./master/plugins/select2/select2.min.css")}}
     <!-- Theme style -->
     {{HTML::style("./master/dist/css/AdminLTE.min.css")}}
+    
+    {{HTML::style("./assets/css/checkdesign.css")}}
 @stop
 
 @section('content')
@@ -33,23 +35,25 @@
                     </select>
                 </div><!-- /.form group -->
 
-                <!-- Color Picker -->
+                <!-- checkbox -->
                 <div class="form-group">
                     <label>Componente Disciplinar</label>
-                    <select id="disc" class="form-control select2" style="width: 100%;" disabled>
-                        <option value=0>- Seleccione una asignatura -</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
-                    </select><!-- /.input group -->
-                </div><!-- /.form group -->
+                    <div id="global">
+                        <div id="mensajes">
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label><br />
+                            <label class="checklabels"><input class="texto" type="checkbox" />  Checkbox 1</label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label>Componente de Fundamentación</label>
-                        <select id="fund" class="form-control select2" style="width: 100%;" disabled>
+                        <select id="disc" class="form-control select2" style="width: 100%;" disabled>
                             <option value=0>- Seleccione una asignatura -</option>
                             <option>Alaska</option>
                             <option>California</option>

@@ -1515,6 +1515,7 @@ S2.define('select2/selection/single',[
             },
             success: function (response) {
                 $('#prueba').text(response.nombre);
+                
             }
         });
     } else{
