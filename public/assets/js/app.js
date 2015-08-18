@@ -6,7 +6,7 @@ managerScreen = {
         $('#n_estu').text("");
         $('#ap_estu').text("");
         $.ajax({
-            url: baseUrl + '/estudiante/datos',
+            url: baseUrl + '/administrador/datos',
             method: 'POST',
             async: true,
             data: {
@@ -23,7 +23,7 @@ managerScreen = {
       });
    },
    save: function(){     
-              
+                 
                $.ajax({
                    url: baseUrl + '/administrador/guardar-citacion',
                    method: 'post',
@@ -34,9 +34,8 @@ managerScreen = {
                    },
                    suscces: function(response){
                        
-                       alert(response);
-                       $('#citacion').modal('hide');
-                       
+                      $('#citacion').hide();
+                       $('.modal-backdrop').hide();
                    }
                    
                    

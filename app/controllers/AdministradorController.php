@@ -102,6 +102,18 @@ class AdministradorController extends BaseController{
         return Response::json($data);
         
     }
+    public function postDatos(){
+        
+        $estudiante = Persona::where('id',Input::get('identificacion'))->first();
+        $datos =[
+            'estudiante' => $estudiante
+            
+        ];
+        
+        return Response::json($datos);
+        
+        
+    }
     
     
 

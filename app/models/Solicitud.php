@@ -23,8 +23,8 @@ class Solicitud extends Eloquent{
     public function solicitante(){
         return $this->belongsTo('Docente','docente');
     }
-    public function curso(){
-        return $this->belongsTo('Curso','curso');
+    public function cursos(){
+        return $this->belongsTo('Curso','curso','codigo');
     }
     
 }
