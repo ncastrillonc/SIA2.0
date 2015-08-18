@@ -19,28 +19,18 @@ Agregar Curso
                 <table class="table table-hover">
                     <tr>
                         <th style="width: 10px">ID</th>
-                        <th>Nombre Curso</th>
-                        <th>Profesor</th>
-                        <th>Horario</th>
-                        <th>Descripción</th>
-                        <th>Salón</th>
-                        <th>Capacidad</th>
-                        <th>Creditos</th>
-                        <th>Tipología</th>
+                        <th>Curso</th>
+                        <th>Profesor</th>                        
+                        <th>Descripción</th>  
                         <th style="width: 40px">&nbsp;</th>
 
                     </tr>
                    @foreach($solicitudes as $solicitud)
                    <tr>
                        <td>{{$solicitud->codigo}}</td>
-                       <td>{{$solicitud->nombre_curso}}</td>
-                       <td>{{$solicitud->usuario}}</td>
-                       <td>{{$solicitud->horario_curso}}</td>
-                       <td>{{$solicitud->descripcion}}</td>
-                       <td>{{$solicitud->capacidad_salon}}</td>
-                       <td>{{$solicitud->capacidad_salon}}</td>
-                       <td>{{$solicitud->creditos_curso}}</td>
-                       <td>{{$solicitud->tipologia_curso}}</td>
+                       <td>{{$solicitud->curso}}</td>
+                       <td>{{$solicitud->solicitante->persona->nombre}} {{$solicitud->solicitante->persona->apellidos}}</td>
+                        <td>{{$solicitud->descripcion}}</td>                     
                        <td><a href="{{URL::to('/administrador/agregar-curso', array($solicitud->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-plus-square-o fa-lg"></i>  Agregar</a></td>
                    </tr>
                    
