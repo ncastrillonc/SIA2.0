@@ -25,18 +25,12 @@ class AdministradorController extends BaseController{
 
     public function getAsignarCitacion($id=null){
         
-        if($id){
-            $estudiante = Estudiante::where('identificacion',$id)->get();
-            if(empty($estudiante[0])){
-                 return Redirect::to('/administrador/asignar-citacion');
-            }else{
-            return View::make('administrador.form_asignarcitacion')->with('estudiante',$estudiante[0]);
-            }
-        }else{
+        $citas = Citacion::all();
         $estudiantes = Estudiante::all();
         return View::make('administrador.asignarcitacion')
-                ->with('estudiantes',$estudiantes);
-        }
+                ->with('estudiantes',$estudiantes)
+                ->with('citas',$citas);
+        
     }
     
     Public function postAsignarCitacion(){
@@ -95,8 +89,20 @@ class AdministradorController extends BaseController{
         }
     }
     
-    public function getPrueba(){
-        return View::make('prueba')->with('a','holi');
+    public function postGuardarCitacion(){
+        $cita = new Citaxestudiante();
+        $cita->citacion = Input::get('cita');
+        $cita->estudiante = Input::get('estudiante');
+        $cita->save();
+        
+        $data = [
+            'estado' => 'hola'
+        ];
+        
+        return Response::json($data);
+        
     }
+    
+    
 
 }

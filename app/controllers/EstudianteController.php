@@ -29,5 +29,17 @@ class EstudianteController extends BaseController{
     public function getLogout() {
         Auth::logout();
         return Redirect::to("/");
-    }    
+    }  
+    public function postDatos(){
+        
+        $estudiante = Persona::where('id',Input::get('identificacion'))->first();
+        $datos =[
+            'estudiante' => $estudiante
+            
+        ];
+        
+        return Response::json($datos);
+        
+        
+    }
 }

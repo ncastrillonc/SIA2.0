@@ -20,5 +20,11 @@ class Solicitud extends Eloquent{
         return $query->where('estado','=',0);
         
     }
+    public function solicitante(){
+        return $this->belongsTo('Docente','docente');
+    }
+    public function curso(){
+        return $this->belongsTo('Curso','curso');
+    }
     
 }
