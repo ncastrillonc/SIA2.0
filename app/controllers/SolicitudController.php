@@ -11,50 +11,49 @@
  *
  * @author Andres Bedoya
  */
-class SolicitudController extends BaseController{
-    
-    public function postCrear(){
-        
-                
+class SolicitudController extends BaseController {
+
+    public function postCrear() {
+
+
         $solicitud = [
-           'docente' => Auth::user()->id,
+            'docente' => Auth::user()->id,
             'curso' => Input::get('curso')
-                
         ];
-        
+
         DB::table('solicitud')->insert($solicitud);
         return Redirect::to('/solicitud/crear');
-        
-        
-        
     }
-    public function getCrear(){
-        
+
+    public function getCrear() {
+
         $curso = Curso::all();
-        
+
         return View::make('profesor.solicitud')
-                ->with("cursos", $curso);
+                        ->with("cursos", $curso);
     }
-    
-    public function postCurso(){
-        
-        $curso = Curso::where('codigo',Input::get('curso'))->first();
-       
-        $data =  [
+
+    public function postCurso() {
+
+        $curso = Curso::where('codigo', Input::get('curso'))->first();
+
+        $data = [
             'codigo' => $curso->codigo,
-            'nombre' =>  $curso->nombre,
+            'nombre' => $curso->nombre,
             'descripcion' => $curso->descripcion,
             'tipologia' => $curso->tipologia,
             'creditos' => $curso->creditos
         ];
-        
-        
+
+
         //var_dump($curso);
-        
+
         return Response::json($data);
-        
-        
+    }
+
+    public function getLogout() {
+        Auth::logout();
+        return Redirect::to("/");
     }
 
 }
-    

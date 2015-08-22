@@ -142,6 +142,8 @@
                     @include('menu.admin')
                 @elseif (Session::get('tipo') === "Estudiante")
                     @include('menu.student')
+                @elseif (Session::get('tipo') === "Docente")
+                    @include('menu.docente')
                 @else
                     I don't have any records!
                 @endif
