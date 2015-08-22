@@ -17,11 +17,14 @@ class SolicitudController extends BaseController{
         
                 
         $solicitud = [
-           $docente = Auth::user()->id
+           'docente' => Auth::user()->id,
+            'curso' => Input::get('curso')
                 
         ];
         
         DB::table('solicitud')->insert($solicitud);
+        return Redirect::to('/solicitud/crear');
+        
         
         
     }
@@ -35,13 +38,22 @@ class SolicitudController extends BaseController{
     
     public function postCurso(){
         
-        $curso = Curso::where('codigo',Input::get('codigo'))->first();
+        $curso = Curso::where('codigo',Input::get('curso'))->first();
        
         $data =  [
-            'nombre' =>  $curso->nombre            
+            'codigo' => $curso->codigo,
+            'nombre' =>  $curso->nombre,
+            'descripcion' => $curso->descripcion,
+            'tipologia' => $curso->tipologia,
+            'creditos' => $curso->creditos
         ];
         
-        return Response::json($data);  
+        
+        //var_dump($curso);
+        
+        return Response::json($data);
+        
+        
     }
 
 }

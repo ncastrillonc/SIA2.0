@@ -19,21 +19,20 @@ Solicitar curso
                                 @foreach($cursos as $curso)
                                 <option value="{{$curso->codigo}}">{{$curso->nombre}}</option>
                                 @endforeach
-                            </select><br>
-                        <b>Horario curso: </b><input required class="box box-input input-box" name="horario_curso" placeholder="Horario del curso"><br>
-                        <b>Salón: </b><input required class="box box-input input-box" name="salon" placeholder="Salon"><br>
-                        <b>Créditos: </b><input required class="box box-input input-box" name="creditos_curso" placeholder="Creditos del curso"><br>
+                            </select><br><br>
+                            <b>Código: </b><h4 id="codigo" class="box box-input input-box"></h4><br>
+                            <b>Tipología: </b><h4 id="tipologia" required class="box box-input input-box" name="salon" placeholder="Salon"></h4><br>
                     </div>
                     <div class="col-xs-6">
-                        <b>Nombre: </b><input required class="box box-input input-box" name="nombre_curso" placeholder="Nombre del curso"><br>
-                        <b>Número de estudiantes: </b><input required class="box box-input input-box" name="capacidad_salon" placeholder="Capacidad del salon"><br>
-                        <b>Tipología:</b><input required class="box box-input input-box" name="tipologia_curso" placeholder="Tipologia"><br><br><br>                    </div>
+                        <b>Créditos: </b><h4 id="creditos" required class="box box-input input-box" name="creditos_curso" placeholder="Creditos del curso"></h4><br>                   
+                    </div>
                 </div>
                 <br>
                 <br>
                 <div class="row div">
                     <b>Descripción: </b><br>
-                    <textarea required class="text" name="descripcion" rows="10" cols="50"></textarea><br>
+                    <textarea id="descripcion" required class="text" name="descripcion" rows="10" cols="50"></textarea><br>
+                    <input id="curso" type="hidden" name="curso">
                     
                 </div>
                 
