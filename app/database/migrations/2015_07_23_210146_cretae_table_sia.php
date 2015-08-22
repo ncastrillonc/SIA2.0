@@ -80,7 +80,6 @@ class CretaeTableSia extends Migration {
             {
                 $table->bigInteger('codigo');
                 $table->string('nombre', 50);
-                $table->smallInteger('capacidad');
                 $table->string('descripcion', 500);
                 $table->string('tipologia', 50);
                 $table->smallInteger('creditos');
@@ -118,23 +117,7 @@ class CretaeTableSia extends Migration {
                 $table->foreign('curso')
                         ->references('codigo')->on('curso');                
             });
-            
-            Schema::create('matricula', function($table)
-            {
-                $table->bigInteger('curso');
-                $table->bigInteger('estudiante');
-                $table->string('periodo', 10);
-                $table->double('nota', 2, 1);                
-                                
-                $table->primary(array('curso', 'estudiante'));
-                
-                $table->foreign('curso')
-                        ->references('codigo')->on('curso');
-                
-                $table->foreign('estudiante')
-                        ->references('id')->on('estudiante');
-            });           
-            
+                   
             Schema::create('est_x_carrera', function($table)
             {
                 $table->bigInteger('estudiante');
@@ -167,7 +150,8 @@ class CretaeTableSia extends Migration {
             {
                 $table->bigInteger('codigo');
                 $table->bigInteger('curso');
-                $table->bigInteger('docente')->nullable();
+                $table->bigInteger('docente')->nullable();                
+                $table->smallInteger('capacidad');
                 
                 $table->primary(array('codigo', 'curso'));
                 
@@ -176,7 +160,24 @@ class CretaeTableSia extends Migration {
                 
                 $table->foreign('docente')
                         ->references('id')->on('docente');
-            });
+            });            
+            
+            Schema::create('matricula', function($table)
+            {
+                $table->bigInteger('grupoCodigo');
+                $table->bigInteger('grupoCurso');
+                $table->bigInteger('estudiante');
+                $table->string('periodo', 10);
+                $table->double('nota', 2, 1);                
+                                
+                $table->primary(array('grupoCodigo', 'grupoCurso', 'estudiante'));
+                
+                $table->foreign(array('grupoCodigo', 'grupoCurso'))
+                        ->references(array('codigo', 'curso'))->on('grupo');
+                
+                $table->foreign('estudiante')
+                        ->references('id')->on('estudiante');
+            });   
             
             Schema::create('programacion', function($table)
             {
@@ -326,7 +327,6 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'codigo' => 10,
                 'nombre' => 'Objetos',
-                'capacidad' => 30,
                 'descripcion' => 'Curso de POO en java',
                 'tipologia' => 'Disciplinar',
                 'creditos' => 3
@@ -336,7 +336,6 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'codigo' => 11,
                 'nombre' => 'Software',
-                'capacidad' => 35,
                 'descripcion' => 'Modelacion y Diagramacion',
                 'tipologia' => 'Disciplinar',
                 'creditos' => 3
@@ -346,7 +345,6 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'codigo' => 12,
                 'nombre' => 'Requisitos',
-                'capacidad' => 40,
                 'descripcion' => 'Educción de requitos y desarrollo de software',
                 'tipologia' => 'Disciplinar',
                 'creditos' => 3
@@ -356,7 +354,6 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'codigo' => 13,
                 'nombre' => 'TAE',
-                'capacidad' => 45,
                 'descripcion' => 'Aprendizaje estadístico',
                 'tipologia' => 'Disciplinar',
                 'creditos' => 3
@@ -366,7 +363,6 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'codigo' => 21,
                 'nombre' => 'Cátedra Antioquia',
-                'capacidad' => 192,
                 'descripcion' => 'Conferencias',
                 'tipologia' => 'Libre Elección',
                 'creditos' => 3
@@ -376,7 +372,6 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'codigo' => 31,
                 'nombre' => 'Cálculo I',
-                'capacidad' => 58,
                 'descripcion' => 'Límites y Derivadas',
                 'tipologia' => 'Fundamentación',
                 'creditos' => 4
@@ -389,7 +384,7 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'id' => 1,
                 'fecha' => date("Y-m-d"),
-                'horaInicio' => "08:05:00",
+                'horaInicio' => "08:55:00",
                 'duracion' => 30,
                 'administrador' => 666
             ]);            
@@ -405,47 +400,6 @@ class CretaeTableSia extends Migration {
                 'curso' => 12
             ]);
             
-            // --
-            
-            DB::table('matricula')
-            ->insert([
-                'curso' => 13,
-                'estudiante' => 11282,
-                'periodo' => '2014-1',
-                'nota' => 3.2
-            ]);
-            
-            DB::table('matricula')
-            ->insert([
-                'curso' => 11,
-                'estudiante' => 11282,
-                'periodo' => '2014-1',
-                'nota' => 4.1
-            ]);
-            
-            DB::table('matricula')
-            ->insert([
-                'curso' => 10,
-                'estudiante' => 11282,
-                'periodo' => '2014-2',
-                'nota' => 3.9
-            ]);
-            
-            DB::table('matricula')
-            ->insert([
-                'curso' => 12,
-                'estudiante' => 11282,
-                'periodo' => '2014-2',
-                'nota' => 3.7
-            ]);
-            
-            DB::table('matricula')
-            ->insert([
-                'curso' => 12,
-                'estudiante' => 11281,
-                'periodo' => '2015-1',
-                'nota' => 3.1
-            ]);
             
             // --
             
@@ -468,8 +422,80 @@ class CretaeTableSia extends Migration {
             DB::table('grupo')
             ->insert([
                 'codigo' => 1,
+                'curso' => 10,
+                'docente' => 1002,
+                'capacidad' => 58
+            ]);
+            
+            DB::table('grupo')
+            ->insert([
+                'codigo' => 1,
                 'curso' => 11,
-                'docente' => 1002
+                'docente' => 1002,
+                'capacidad' => 58
+            ]);
+            
+            DB::table('grupo')
+            ->insert([
+                'codigo' => 1,
+                'curso' => 12,
+                'docente' => 1002,
+                'capacidad' => 58
+            ]);
+            
+            DB::table('grupo')
+            ->insert([
+                'codigo' => 1,
+                'curso' => 13,
+                'docente' => 1002,
+                'capacidad' => 58
+            ]);
+            
+            // --
+            
+            DB::table('matricula')
+            ->insert([
+                'grupoCodigo' => 1,
+                'grupoCurso' => 13,
+                'estudiante' => 11282,
+                'periodo' => '2014-1',
+                'nota' => 3.2
+            ]);
+            
+            DB::table('matricula')
+            ->insert([
+                'grupoCodigo' => 1,
+                'grupoCurso' => 11,
+                'estudiante' => 11282,
+                'periodo' => '2014-1',
+                'nota' => 4.1
+            ]);
+            
+            DB::table('matricula')
+            ->insert([
+                'grupoCodigo' => 1,
+                'grupoCurso' => 10,
+                'estudiante' => 11282,
+                'periodo' => '2014-2',
+                'nota' => 3.9
+            ]);
+            
+            DB::table('matricula')
+            ->insert([
+                'grupoCodigo' => 1,
+                'grupoCurso' => 12,
+                'estudiante' => 11282,
+                'periodo' => '2014-2',
+                'nota' => 3.7
+            ]);
+            
+            DB::table('matricula')
+            ->insert([
+                'grupoCodigo' => 1,
+                'grupoCurso' => 12,
+                'estudiante' => 11281,
+                'periodo' => '2015-1',
+                'nota' => 3.1
             ]);
             
             // --
@@ -496,10 +522,10 @@ class CretaeTableSia extends Migration {
 	public function down()
 	{
             Schema::drop('programacion'); 
+            Schema::drop('matricula'); 
             Schema::drop('grupo'); 
             Schema::drop('cita_x_estudiante'); 
-            Schema::drop('est_x_carrera');            
-            Schema::drop('matricula');            
+            Schema::drop('est_x_carrera');
             Schema::drop('solicitud');
             Schema::drop('citacion');            
             Schema::drop('curso');
