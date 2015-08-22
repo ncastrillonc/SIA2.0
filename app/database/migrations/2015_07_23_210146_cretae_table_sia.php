@@ -362,13 +362,34 @@ class CretaeTableSia extends Migration {
                 'creditos' => 3
             ]);
             
+            DB::table('curso')
+            ->insert([
+                'codigo' => 21,
+                'nombre' => 'Cátedra Antioquia',
+                'capacidad' => 192,
+                'descripcion' => 'Conferencias',
+                'tipologia' => 'Libre Elección',
+                'creditos' => 3
+            ]);
+            
+            DB::table('curso')
+            ->insert([
+                'codigo' => 31,
+                'nombre' => 'Cálculo I',
+                'capacidad' => 58,
+                'descripcion' => 'Límites y Derivadas',
+                'tipologia' => 'Fundamentación',
+                'creditos' => 4
+            ]);
+            
             // --
+            // 'horaInicio' => time()
             
             DB::table('citacion')
             ->insert([
                 'id' => 1,
                 'fecha' => date("Y-m-d"),
-                'horaInicio' => time(),
+                'horaInicio' => "08:05:00",
                 'duracion' => 30,
                 'administrador' => 666
             ]);            

@@ -1524,19 +1524,16 @@ S2.define('select2/selection/single',[
                     var materias = response.cursos;
 
                     for (i in materias) { 
-                        var materia = materias[i];                        
-                        var $materiasD = $('<label class="checklabels"><input class="texto" type="checkbox" />  ' + materia.nombre + '</label><br />');
-                        $materiasD.appendTo('#mensajes1');
-                    }
-                    for (i in materias) { 
-                        var materia = materias[i];                        
-                        var $materiasF = $('<label class="checklabels"><input class="texto" type="checkbox" />  ' + materia.nombre + '</label><br />');
-                        $materiasF.appendTo('#mensajes2');
-                    }
-                    for (i in materias) { 
-                        var materia = materias[i];                        
-                        var $materiasL = $('<label class="checklabels"><input class="texto" type="checkbox" />  ' + materia.nombre + '</label><br />');
-                        $materiasL.appendTo('#mensajes3');
+                        var materia = materias[i];   
+                        var $materiasDFL = $('<label class="checklabels"><input class="texto" type="checkbox" />  ' + materia.nombre + '</label><br />');
+                        
+                        if(materia.tipologia == "Disciplinar"){                            
+                            $materiasDFL.appendTo('#mensajes1');
+                        } else if(materia.tipologia == "Fundamentación"){
+                            $materiasDFL.appendTo('#mensajes2');
+                        } else{
+                            $materiasDFL.appendTo('#mensajes3');
+                        }
                     }
                 }
             });

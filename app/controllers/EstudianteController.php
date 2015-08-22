@@ -59,7 +59,7 @@ class EstudianteController extends BaseController{
             $startDate = $cita->fecha;
             $startHour = $cita->horaInicio;
             
-            $endHour = strtotime ('+40 minute' , strtotime ($startHour)) ;
+            $endHour = strtotime ('+30 minute' , strtotime ($startHour)) ;
             $endHour = date ('H:i:s' , $endHour);
             
             // Si es el día de la inscripción y está dentro del rango horario
