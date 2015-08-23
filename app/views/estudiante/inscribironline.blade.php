@@ -66,7 +66,11 @@
                     </div>
                 </div>
                 
-                <hr />
+                <!-- botón -->
+                <div class="form-group">
+                    <input type="submit" name="boton" value="Siguiente"/>
+                </div>
+                
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     
