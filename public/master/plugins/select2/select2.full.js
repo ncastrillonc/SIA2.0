@@ -1520,7 +1520,9 @@ S2.define('select2/selection/single',[
                 },
                 success: function (response) {
                     $('#prueba').text(response.nombre);
-
+                    //$( ".checklabels" ).remove();
+                    $( ".mensajes" ).empty();
+                    
                     var materias = response.cursos;
 
                     for (i in materias) { 
