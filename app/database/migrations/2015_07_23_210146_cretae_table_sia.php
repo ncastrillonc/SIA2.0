@@ -654,6 +654,12 @@ class CretaeTableSia extends Migration {
             
             DB::table('curso_x_carrera')
             ->insert([
+                'curso' => 14,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
                 'curso' => 21,
                 'carrera' => 2345
             ]);
