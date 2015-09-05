@@ -26,7 +26,7 @@ class EstudianteController extends BaseController{
             for($i=0; $i<count($periodos); $i++){
                 $matriculas = Matricula::where('estudiante',$cedula_id)
                         ->where('periodo',$periodos[$i])
-                        ->join('curso', 'matricula.curso', '=', 'curso.codigo')
+                        ->join('curso', 'matricula.grupoCurso', '=', 'curso.codigo')
                         ->get();
                 array_push($semestres, $matriculas);
             }
