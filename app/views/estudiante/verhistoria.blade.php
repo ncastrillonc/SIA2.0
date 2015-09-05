@@ -23,7 +23,7 @@
 
                     @foreach($semestre as $matricula)
                         <tr>
-                            <td>{{$matricula->curso}}</td>
+                            <td>{{$matricula->grupoCurso}}</td>
                             <td>{{$matricula->nombre}}</td>
                             <td>{{$matricula->creditos}}</td>
                             <td>{{$matricula->nota}}</td>
