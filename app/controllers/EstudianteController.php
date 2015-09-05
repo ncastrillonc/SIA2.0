@@ -80,9 +80,13 @@ class EstudianteController extends BaseController{
     }
     
     public function postBuscar(){
-        
+        //Auth::user()->id
+                                
         $carrera = Carrera::where('codigo',Input::get('codigo'))->first();
-        $cursos = Curso::all();
+        
+        $cursos = CursoXcarrera::where('carrera',Input::get('codigo'))
+                        ->join('curso', 'curso_x_carrera.curso', '=', 'curso.codigo')
+                        ->get();
 
         $data =  [
             'nombre' =>  $carrera->nombre,
