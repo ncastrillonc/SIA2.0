@@ -434,6 +434,15 @@ class CretaeTableSia extends Migration {
             
             DB::table('curso')
             ->insert([
+                'codigo' => 14,
+                'nombre' => 'Estructura de Datos',
+                'descripcion' => 'Materia en C++',
+                'tipologia' => 'Disciplinar',
+                'creditos' => 3
+            ]);
+            
+            DB::table('curso')
+            ->insert([
                 'codigo' => 21,
                 'nombre' => 'Cátedra Antioquia',
                 'descripcion' => 'Conferencias',
@@ -594,7 +603,7 @@ class CretaeTableSia extends Migration {
             ->insert([
                 'id' => 1,
                 'fecha' => date("Y-m-d"),
-                'horaInicio' => "08:00:00",
+                'horaInicio' => "09:45:00",
                 'duracion' => 30,
                 'administrador' => 666
             ]);        
