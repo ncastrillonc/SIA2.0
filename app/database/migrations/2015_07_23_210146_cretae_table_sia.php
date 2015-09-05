@@ -89,63 +89,6 @@ class CretaeTableSia extends Migration {
             
             // --
             
-            Schema::create('citacion', function($table)
-            {
-                $table->bigIncrements('id');
-                $table->date('fecha');
-                $table->time('horaInicio');
-                $table->smallInteger('duracion');
-                $table->bigInteger('administrador');
-                
-                $table->foreign('administrador')
-                        ->references('id')->on('administrador');
-            });
-            
-            Schema::create('solicitud', function($table)
-            {
-                $table->date('fecha');
-                $table->bigInteger('docente');
-                $table->bigInteger('administrador')->nullable();
-                $table->bigInteger('curso');
-                
-                $table->foreign('docente')
-                        ->references('id')->on('docente');
-                
-                $table->foreign('administrador')
-                        ->references('id')->on('administrador');
-                
-                $table->foreign('curso')
-                        ->references('codigo')->on('curso');                
-            });
-                   
-            Schema::create('est_x_carrera', function($table)
-            {
-                $table->bigInteger('estudiante');
-                $table->bigInteger('carrera');                
-                
-                $table->primary(array('estudiante', 'carrera'));
-                
-                $table->foreign('estudiante')
-                        ->references('id')->on('estudiante');
-                
-                $table->foreign('carrera')
-                        ->references('codigo')->on('carrera');
-            });
-            
-            Schema::create('cita_x_estudiante', function($table)
-            {
-                $table->bigInteger('citacion')->unsigned()->nullable();
-                $table->bigInteger('estudiante');
-                
-                $table->primary(array('citacion', 'estudiante'));
-                
-                $table->foreign('citacion')
-                        ->references('id')->on('citacion');
-                
-                $table->foreign('estudiante')
-                        ->references('id')->on('estudiante');
-            });
-            
             Schema::create('grupo', function($table)
             {
                 $table->bigInteger('codigo');
@@ -160,24 +103,7 @@ class CretaeTableSia extends Migration {
                 
                 $table->foreign('docente')
                         ->references('id')->on('docente');
-            });            
-            
-            Schema::create('matricula', function($table)
-            {
-                $table->bigInteger('grupoCodigo');
-                $table->bigInteger('grupoCurso');
-                $table->bigInteger('estudiante');
-                $table->string('periodo', 10);
-                $table->double('nota', 2, 1);                
-                                
-                $table->primary(array('grupoCodigo', 'grupoCurso', 'estudiante'));
-                
-                $table->foreign(array('grupoCodigo', 'grupoCurso'))
-                        ->references(array('codigo', 'curso'))->on('grupo');
-                
-                $table->foreign('estudiante')
-                        ->references('id')->on('estudiante');
-            });   
+            });    
             
             Schema::create('programacion', function($table)
             {
@@ -197,6 +123,139 @@ class CretaeTableSia extends Migration {
                 $table->foreign(array('grupo_codigo', 'grupo_curso'))->references(array('codigo', 'curso'))->on('grupo');
                 $table->foreign(array('salon_bloque', 'salon_aula'))->references(array('bloque', 'aula'))->on('salon');
             });
+            
+            Schema::create('matricula', function($table)
+            {
+                $table->bigInteger('grupoCodigo');
+                $table->bigInteger('grupoCurso');
+                $table->bigInteger('estudiante');
+                $table->string('periodo', 10);
+                $table->double('nota', 2, 1);                
+                                
+                $table->primary(array('grupoCodigo', 'grupoCurso', 'estudiante'));
+                
+                $table->foreign(array('grupoCodigo', 'grupoCurso'))
+                        ->references(array('codigo', 'curso'))->on('grupo');
+                
+                $table->foreign('estudiante')
+                        ->references('id')->on('estudiante');
+            });   
+            
+            Schema::create('cupo_grupo', function($table)
+            {
+                $table->bigInteger('estudiante');
+                $table->bigInteger('grupoCodigo');
+                $table->bigInteger('grupoCurso');
+                
+                $table->primary(array('estudiante', 'grupoCodigo', 'grupoCurso'));
+                
+                $table->foreign('estudiante')
+                        ->references('id')->on('estudiante');
+                
+                $table->foreign(array('grupoCodigo', 'grupoCurso'))
+                        ->references(array('codigo', 'curso'))->on('grupo');
+            });
+            
+            Schema::create('requisito', function($table)
+            {
+                $table->bigInteger('curso');
+                $table->bigInteger('requisito');
+                $table->string('tipo', 1); // P: Prerrequisito - C: Correquisito
+                
+                $table->primary(array('curso', 'requisito'));
+                
+                $table->foreign('curso')
+                        ->references('codigo')->on('curso');
+                
+                $table->foreign('requisito')
+                        ->references('codigo')->on('curso');
+            });
+            
+            Schema::create('cupo_curso', function($table)
+            {
+                $table->bigInteger('estudiante');
+                $table->bigInteger('curso');
+                
+                $table->primary(array('estudiante', 'curso'));
+                
+                $table->foreign('estudiante')
+                        ->references('id')->on('estudiante');
+                
+                $table->foreign('curso')
+                        ->references('codigo')->on('curso');
+            });         
+                        
+            Schema::create('citacion', function($table)
+            {
+                $table->bigIncrements('id');
+                $table->date('fecha');
+                $table->time('horaInicio');
+                $table->smallInteger('duracion');
+                $table->bigInteger('administrador');
+                
+                $table->foreign('administrador')
+                        ->references('id')->on('administrador');
+            });
+            
+            Schema::create('cita_x_estudiante', function($table)
+            {
+                $table->bigInteger('citacion')->unsigned()->nullable();
+                $table->bigInteger('estudiante');
+                
+                $table->primary(array('citacion', 'estudiante'));
+                
+                $table->foreign('citacion')
+                        ->references('id')->on('citacion');
+                
+                $table->foreign('estudiante')
+                        ->references('id')->on('estudiante');
+            });
+            
+            Schema::create('solicitud', function($table)
+            {
+                $table->date('fecha');
+                $table->bigInteger('docente');
+                $table->bigInteger('administrador')->nullable();
+                $table->bigInteger('curso');
+                
+                $table->foreign('docente')
+                        ->references('id')->on('docente');
+                
+                $table->foreign('administrador')
+                        ->references('id')->on('administrador');
+                
+                $table->foreign('curso')
+                        ->references('codigo')->on('curso');                
+            });
+            
+            Schema::create('curso_x_carrera', function($table)
+            {
+                $table->bigInteger('curso');
+                $table->bigInteger('carrera');
+                
+                $table->primary(array('curso', 'carrera'));
+                
+                $table->foreign('curso')
+                        ->references('codigo')->on('curso');
+                
+                $table->foreign('carrera')
+                        ->references('codigo')->on('carrera');
+            });         
+                   
+            Schema::create('est_x_carrera', function($table)
+            {
+                $table->bigInteger('estudiante');
+                $table->bigInteger('carrera');                
+                
+                $table->primary(array('estudiante', 'carrera'));
+                
+                $table->foreign('estudiante')
+                        ->references('id')->on('estudiante');
+                
+                $table->foreign('carrera')
+                        ->references('codigo')->on('carrera');
+            });
+            
             
             // **************************************************************
             
@@ -245,6 +304,15 @@ class CretaeTableSia extends Migration {
                 'password' => Hash::make('202')
             ]);
             
+            DB::table('persona')
+            ->insert([
+                'id' => 39536,
+                'nombre' => 'Nathalie',
+                'apellidos' => 'Charari',
+                'usuario' => 'natachara',
+                'password' => Hash::make('303')
+            ]);
+            
             // -- 
             
             DB::table('administrador')
@@ -276,6 +344,11 @@ class CretaeTableSia extends Migration {
             DB::table('estudiante')
             ->insert([
                 'id' => 11282
+            ]);
+            
+            DB::table('estudiante')
+            ->insert([
+                'id' => 39536
             ]);
             
             // -- 
@@ -321,7 +394,7 @@ class CretaeTableSia extends Migration {
                 'credDisc' => 62
             ]);
             
-            // --
+            // --            
             
             DB::table('curso')
             ->insert([
@@ -378,46 +451,6 @@ class CretaeTableSia extends Migration {
             ]);
             
             // --
-            // 'horaInicio' => time()
-            
-            DB::table('citacion')
-            ->insert([
-                'id' => 1,
-                'fecha' => date("Y-m-d"),
-                'horaInicio' => "08:55:00",
-                'duracion' => 30,
-                'administrador' => 666
-            ]);            
-            
-            
-            // --
-            
-            DB::table('solicitud')
-            ->insert([
-                'fecha' => date("Y-m-d"),
-                'docente' => 1001,
-                'administrador' => 666,
-                'curso' => 12
-            ]);
-            
-            
-            // --
-            
-            DB::table('est_x_carrera')
-            ->insert([
-                'estudiante' => 11282,
-                'carrera' => 2345
-            ]);
-            
-            // --
-            
-            DB::table('cita_x_estudiante')
-            ->insert([
-                'citacion' => 1,
-                'estudiante' => 11282
-            ]);
-            
-            // --
             
             DB::table('grupo')
             ->insert([
@@ -449,6 +482,21 @@ class CretaeTableSia extends Migration {
                 'curso' => 13,
                 'docente' => 1002,
                 'capacidad' => 58
+            ]);            
+            
+            // --
+            
+            DB::table('programacion')
+            ->insert([
+                'codigo' => 1,
+                'dia' => 'Lunes',
+                'horaInicio' => time(),
+                'duracion' => 2,
+                'grupo_codigo' => 1,
+                'grupo_curso' => 11,
+                'salon_bloque' => 'M8',
+                'salon_aula' => '202'
+                
             ]);
             
             // --
@@ -500,18 +548,135 @@ class CretaeTableSia extends Migration {
             
             // --
             
-            DB::table('programacion')
+            DB::table('cupo_grupo')
             ->insert([
-                'codigo' => 1,
-                'dia' => 'Lunes',
-                'horaInicio' => time(),
-                'duracion' => 2,
-                'grupo_codigo' => 1,
-                'grupo_curso' => 11,
-                'salon_bloque' => 'M8',
-                'salon_aula' => '202'
-                
+                'estudiante' => 39536,
+                'grupoCodigo' => 1,
+                'grupoCurso' => 12
             ]);
+            
+            DB::table('cupo_grupo')
+            ->insert([
+                'estudiante' => 39536,
+                'grupoCodigo' => 1,
+                'grupoCurso' => 13
+            ]);
+            
+            // --
+            
+            DB::table('requisito')
+            ->insert([
+                'curso' => 13,
+                'requisito' => 11,
+                'tipo' => 'P'
+            ]);
+            
+            DB::table('requisito')
+            ->insert([
+                'curso' => 10,
+                'requisito' => 31,
+                'tipo' => 'C'
+            ]);
+            
+            // --
+            
+            DB::table('cupo_curso')
+            ->insert([
+                'estudiante' => 39536,
+                'curso' => 31
+            ]);
+            
+            // --
+            
+            // 'horaInicio' => time()
+            
+            DB::table('citacion')
+            ->insert([
+                'id' => 1,
+                'fecha' => date("Y-m-d"),
+                'horaInicio' => "08:00:00",
+                'duracion' => 30,
+                'administrador' => 666
+            ]);        
+            
+            // --
+            
+            DB::table('cita_x_estudiante')
+            ->insert([
+                'citacion' => 1,
+                'estudiante' => 11282
+            ]);
+            
+            // --
+            
+            DB::table('solicitud')
+            ->insert([
+                'fecha' => date("Y-m-d"),
+                'docente' => 1001,
+                'administrador' => 666,
+                'curso' => 12
+            ]);
+                        
+            // --
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 10,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 11,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 12,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 13,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 21,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 31,
+                'carrera' => 2345
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 21,
+                'carrera' => 2378
+            ]);
+            
+            DB::table('curso_x_carrera')
+            ->insert([
+                'curso' => 31,
+                'carrera' => 2378
+            ]);
+            
+            // --
+            
+            DB::table('est_x_carrera')
+            ->insert([
+                'estudiante' => 11282,
+                'carrera' => 2345
+            ]);
+            
+            // --
+            
 	}
 
 	/**
@@ -521,13 +686,17 @@ class CretaeTableSia extends Migration {
 	 */
 	public function down()
 	{
-            Schema::drop('programacion'); 
-            Schema::drop('matricula'); 
-            Schema::drop('grupo'); 
-            Schema::drop('cita_x_estudiante'); 
-            Schema::drop('est_x_carrera');
+            Schema::drop('est_x_carrera');            
+            Schema::drop('curso_x_carrera'); 
             Schema::drop('solicitud');
-            Schema::drop('citacion');            
+            Schema::drop('cita_x_estudiante'); 
+            Schema::drop('citacion'); 
+            Schema::drop('cupo_curso'); 
+            Schema::drop('requisito'); 
+            Schema::drop('cupo_grupo'); 
+            Schema::drop('matricula'); 
+            Schema::drop('programacion'); 
+            Schema::drop('grupo'); 
             Schema::drop('curso');
             Schema::drop('carrera');
             Schema::drop('salon');            
