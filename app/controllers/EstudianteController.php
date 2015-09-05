@@ -84,9 +84,14 @@ class EstudianteController extends BaseController{
                                 
         $carrera = Carrera::where('codigo',Input::get('codigo'))->first();
         
+        // Cursos de acuerdo a la carrera
         $cursos = CursoXcarrera::where('carrera',Input::get('codigo'))
                         ->join('curso', 'curso_x_carrera.curso', '=', 'curso.codigo')
                         ->get();
+        
+        // Cursos que no ha ganado o no ha visto
+        
+        // Cursos para los que ha cumplido el prerrequisito
 
         $data =  [
             'nombre' =>  $carrera->nombre,
